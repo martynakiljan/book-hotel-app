@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+.nav {
+  height: 80px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-img {
+  background-image: url(../src//assets/images/header2.jpg);
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header-img__mask {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 80px);
+  width: 100%;
+  background-color: rgb(107 114 128);
+  opacity: 0.6;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.booking__form {
+  position: absolute;
+  top: 0;
+}
+
+.w-dvw {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: center; /* Wyśrodkowanie w poziomie */
+  align-items: center; /* Wyśrodkowanie w pionie */
+  position: relative; /* Względne pozycjonowanie dla umieszczenia obrazu tła i maski */
 }
 
-.App-link {
-  color: #61dafb;
+/* Styl dla formularza rezerwacji */
+.booking__form {
+  position: absolute; /* Absolutne pozycjonowanie */
+  top: 50%; /* Wysokość 50% od góry */
+  left: 50%; /* Lewa krawędź w połowie szerokości */
+  transform: translate(-50%, -50%);
+  padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.font-medium {
+  text-wrap: nowrap;
+}
+
+.checkbox-label {
+  padding: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 300;
 }
