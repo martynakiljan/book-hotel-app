@@ -8,6 +8,8 @@ import Home from "./Home";
 import Vouchers from "./Vouchers";
 import Contact from "./Contact";
 import HotelDetails from "./HotelDatails";
+import Imprint from "./Imprint";
+
 const Sections = () => {
   return (
     <Routes>
@@ -17,6 +19,7 @@ const Sections = () => {
       <Route path="/about" element={<About />} />
       <Route path="/vouchers" element={<Vouchers />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/imprint" element={<Imprint />} />
     </Routes>
   );
 };

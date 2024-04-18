@@ -77,6 +77,10 @@ body {
 
 .active {
     color: #0c9488;
+
+    .footer & {
+        color: inherit;
+    }
 }
 
 img {

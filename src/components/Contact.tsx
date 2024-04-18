@@ -19,7 +19,8 @@ const Contact = () => {
 
   return (
     <div className="py-16 px-4 container mx-auto mt-auto mb-auto h-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <h3 className="text-3xl font-bold dark:text-white my-8 ">Contact us</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-4">
         <div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
@@ -89,6 +90,11 @@ const Contact = () => {
               )}
             </div>
             <button
+              style={{
+                backgroundColor: "rgb(12, 148, 136)",
+                padding: "8px 16px",
+                borderRadius: "8px",
+              }}
               type="submit"
               className="bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600"
             >
@@ -101,15 +107,15 @@ const Contact = () => {
           <div className="flex items-center space-x-4">
             <FontAwesomeIcon
               icon={faFacebook}
-              className="text-blue-600 text-2xl"
+              className="text-blue-600 text-3xl"
             />
             <FontAwesomeIcon
               icon={faTwitter}
-              className="text-blue-400 text-2xl"
+              className="text-blue-400 text-3xl"
             />
             <FontAwesomeIcon
               icon={faInstagram}
-              className="text-pink-600 text-2xl"
+              className="text-pink-600 text-3xl"
             />
           </div>
           <p className="mt-4 text-gray-700">

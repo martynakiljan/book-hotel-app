@@ -1,3 +1,5 @@
+/** @format */
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSuitcaseRolling } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -5,7 +7,7 @@ import {
   faFacebook,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-
+import { NavLink } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="bg-teal-600 text-gray-100 p-4">
@@ -30,27 +32,36 @@ const Footer = () => {
 
         <div className="flex justify-center">
           <a href="#" className="mr-4">
-            <FontAwesomeIcon icon={faInstagram} className="text-2xl" />
+            <FontAwesomeIcon
+              icon={faInstagram}
+              className="text-2xl text-teal-300"
+            />
           </a>
           <a href="#" className="mr-4">
-            <FontAwesomeIcon icon={faFacebook} className="text-2xl" />
+            <FontAwesomeIcon
+              icon={faFacebook}
+              className="text-2xl text-teal-300"
+            />
           </a>
           <a href="#">
-            <FontAwesomeIcon icon={faYoutube} className="text-2xl" />
+            <FontAwesomeIcon
+              icon={faYoutube}
+              className="text-2xl text-teal-300"
+            />
           </a>
         </div>
       </div>
 
-      <div className="container mx-auto pt-5">
-        <a href="#" className="text-gray-100 hover:text-gray-200 mr-4">
+      <div className="footer container mx-auto pt-5">
+        <NavLink to="/contact" className="text-teal-300  mr-4">
           Contact
-        </a>
-        <a href="#" className="text-gray-100 hover:text-gray-200 mr-4">
+        </NavLink>
+        <NavLink to="/vouchers" className="text-teal-300  mr-4">
           Vouchers
-        </a>
-        <a href="#" className="text-gray-100 hover:text-gray-200">
-          Impressum
-        </a>
+        </NavLink>
+        <NavLink to="/imprint" className="text-teal-300 ">
+          Imprint
+        </NavLink>
       </div>
     </div>
   );

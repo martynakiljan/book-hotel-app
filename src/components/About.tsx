@@ -9,7 +9,7 @@ const About = () => {
   return (
     <>
       <div className="py-16 mt-16 container mx-auto mt-auto mb-auto h-full p-4">
-        <h3 className="text-3xl font-bold dark:text-white">About us</h3>
+        <h3 className="text-3xl font-bold dark:text-white my-8 ">About us</h3>
         <p className="my-4 text-lg">
           Welcome to BookHotel, your go-to destination for finding the perfect
           accommodations around the world. Similar to booking.com, our platform
@@ -20,12 +20,14 @@ const About = () => {
         <div className="grid grid-cols-1 gap-4">
           <div className="flex flex-col items-center sm:flex-row mt-10">
             <img
-              className="w-60 h-50 rounded-full mb-4 sm:mr-4 sm:mb-0 sm:mt-0"
+              className="w-60 h-60 rounded-full mb-4 sm:mr-4 sm:mb-0 sm:mt-0"
               src={img1}
               alt="John Doe"
             />
             <div className="sm:w-2/3 mt-10 pl-20">
-              <h2 className="text-2xl font-bold dark:text-white">John Doe</h2>
+              <h2 className="text-2xl font-bold dark:text-white text-teal-600">
+                John Doe
+              </h2>
               <p className="text-lg font-normal dark:text-gray-400">
                 Co-Founder and CEO
               </p>
@@ -39,12 +41,14 @@ const About = () => {
           </div>
           <div className="flex flex-col items-center sm:flex-row mt-10">
             <img
-              className="w-60 h-50 rounded-full mb-4 sm:mr-4 sm:mb-0 sm:mt-0"
+              className="w-60 h-60 rounded-full mb-4 sm:mr-4 sm:mb-0 sm:mt-0"
               src={img2}
               alt="Kate Smith"
             />
             <div className="sm:w-2/3 mt-10 pl-20">
-              <h2 className="text-2xl font-bold dark:text-white">Kate Smith</h2>
+              <h2 className="text-2xl font-bold dark:text-white text-teal-600">
+                Kate Smith
+              </h2>
               <p className="text-lg font-normal dark:text-gray-400">
                 Head of Operations
               </p>
@@ -59,12 +63,12 @@ const About = () => {
           </div>
           <div className="flex flex-col items-center sm:flex-row mt-10">
             <img
-              className="w-60 h-50 rounded-full mb-4 sm:mr-4 sm:mb-0 sm:mt-0"
+              className="w-60 h-60 rounded-full mb-4 sm:mr-4 sm:mb-0 sm:mt-0"
               src={img3}
               alt="Michael Johnson"
             />
             <div className="sm:w-2/3 mt-10 pl-20">
-              <h2 className="text-2xl font-bold dark:text-white">
+              <h2 className="text-2xl font-bold dark:text-white text-teal-600">
                 Michael Johnson
               </h2>
               <p className="text-lg font-normal dark:text-gray-400">
