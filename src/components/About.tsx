@@ -1,6 +1,5 @@
 /** @format */
 
-import React from "react";
 import img1 from "../assets/team-images/team1.jpg";
 import img2 from "../assets/team-images/team2.jpg";
 import img3 from "../assets/team-images/team3.jpg";

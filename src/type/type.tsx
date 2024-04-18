@@ -1,6 +1,7 @@
 /** @format */
 
 export interface HotelData {
+  id: string;
   name: string;
   country: string;
   city: string;
@@ -17,4 +18,13 @@ export interface HotelData {
   src: string;
   featured: boolean;
   description: string;
+}
+
+export interface HotelProps {
+  id: string;
+  name: string;
+  city: string;
+  country: string;
+  pricePerNight: number;
+  src: string;
 }

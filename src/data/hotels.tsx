@@ -12,6 +12,7 @@ import hotel10 from "../assets/hotels-images/hotel-10.jpg";
 
 export const hotels = [
   {
+    id: crypto.randomUUID(),
     name: "Sunset Cove Resort",
     country: "Thailand",
     city: "Phuket",
@@ -31,6 +32,7 @@ export const hotels = [
       "Sunset Cove Resort is located in Thailand. You can bring your pet along. You can swim in the pool and enjoy breakfast included in the price!",
   },
   {
+    id: crypto.randomUUID(),
     name: "Mountain Retreat Lodge",
     country: "Canada",
     city: "Banff",
@@ -50,6 +52,7 @@ export const hotels = [
       "Mountain Retreat Lodge is nestled in the mountains of Canada. Enjoy the serene surroundings and breathe in the fresh mountain air.",
   },
   {
+    id: crypto.randomUUID(),
     name: "Lakeview Haven Hotel",
     country: "United States",
     city: "Lake Tahoe",
@@ -69,6 +72,7 @@ export const hotels = [
       "Lakeview Haven Hotel is situated by the picturesque Lake Tahoe in the United States. Bring your furry friend along and enjoy a refreshing swim in the pool.",
   },
   {
+    id: crypto.randomUUID(),
     name: "Forest Hideaway Inn",
     country: "Germany",
     city: "Black Forest",
@@ -88,6 +92,7 @@ export const hotels = [
       "Forest Hideaway Inn is nestled in the heart of Germany's enchanting Black Forest. Experience tranquility surrounded by lush greenery.",
   },
   {
+    id: crypto.randomUUID(),
     name: "Seaside Oasis Retreat",
     country: "Australia",
     city: "Gold Coast",
@@ -107,6 +112,7 @@ export const hotels = [
       "Seaside Oasis Retreat is the ultimate beachfront escape in Australia's Gold Coast. Enjoy stunning ocean views and relax by the pool.",
   },
   {
+    id: crypto.randomUUID(),
     name: "Grand Palace Hotel",
     country: "France",
     city: "Paris",
@@ -126,6 +132,7 @@ export const hotels = [
       "Grand Palace Hotel is located in the heart of Paris, France. Immerse yourself in the charm of the city of lights with luxurious accommodations.",
   },
   {
+    id: crypto.randomUUID(),
     name: "Desert Mirage Resort",
     country: "United Arab Emirates",
     city: "Dubai",
@@ -145,6 +152,7 @@ export const hotels = [
       "Desert Mirage Resort offers a luxurious oasis in the desert of Dubai, United Arab Emirates. Experience the ultimate blend of comfort and adventure.",
   },
   {
+    id: crypto.randomUUID(),
     name: "Island Paradise Hotel",
     country: "Maldives",
     city: "Male",
@@ -164,6 +172,7 @@ export const hotels = [
       "Island Paradise Hotel is nestled on a pristine island in the Maldives. Indulge in luxury and tranquility surrounded by crystal-clear waters.",
   },
   {
+    id: crypto.randomUUID(),
     name: "Alpine Lodge",
     country: "Switzerland",
     city: "Zermatt",
@@ -183,6 +192,7 @@ export const hotels = [
       "Alpine Lodge offers stunning views of the Swiss Alps in Zermatt, Switzerland. Experience alpine luxury at its finest.",
   },
   {
+    id: crypto.randomUUID(),
     name: "Tropical Retreat Resort",
     country: "Costa Rica",
     city: "Manuel Antonio",
