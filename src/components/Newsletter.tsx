@@ -1,6 +1,10 @@
+/** @format */
+
+import "../styles/all.scss";
+
 const Newsletter = () => {
   return (
-    <div className="bg-gray-100 py-8 px-4 md:px-0">
+    <div className="bg-gray-100 py-16 px-4 md:px-0">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-2xl font-regular text-gray-800 mb-4">
           Subscribe to our Newsletter

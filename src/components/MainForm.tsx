@@ -1,4 +1,6 @@
-import "../App.css";
+/** @format */
+
+import "../styles/all.scss";
 
 const MainForm = () => {
   return (
@@ -8,8 +10,8 @@ const MainForm = () => {
         Book Your Stay
       </h2>
       <form>
-        <div className="flex flex-col md:flex-row mb-4">
-          <div className="flex items-center mr-4">
+        <div className="flex flex-col md:flex-row mb-4 h-full">
+          <div className="flex items-center mr-4 h-full">
             <label
               htmlFor="startDate"
               className="block text-sm font-medium text-gray-700 mr-2"

@@ -1,0 +1,84 @@
+@import "./mixins.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.nav {
+    height: 80px;
+}
+
+.header-img {
+    background-image: url(../assets/header-images/header2.jpg);
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.header-img__mask {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 80px);
+    width: 100%;
+    background-color: rgb(107 114 128);
+    opacity: 0.6;
+}
+
+.booking__form {
+    position: absolute;
+    top: 0;
+}
+
+.w-dvw {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+.booking__form {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+
+    @include md-min {
+        top: 50%;
+    }
+}
+
+.font-medium {
+    text-wrap: nowrap;
+}
+
+.checkbox-label {
+    padding: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.custom-checbox {
+    @include sm-max {
+        font-size: 12px;
+    }
+}
+
+.active {
+    color: #0c9488;
+}
+
+img {
+    object-fit: cover;
+}

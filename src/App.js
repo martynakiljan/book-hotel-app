@@ -1,17 +1,22 @@
-import "./App.css";
+/** @format */
+
+import "./styles/all.scss";
 import Menu from "./components/Menu";
-import Header from "./components/Header";
+import Sections from "./components/Sections";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Menu />
-      <Header />
-      <Newsletter />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Menu />
+        <Sections />
+        <Newsletter />
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

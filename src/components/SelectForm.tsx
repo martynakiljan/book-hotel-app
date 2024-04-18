@@ -1,5 +1,7 @@
+/** @format */
+
 import { useState } from "react";
-import "../App.css";
+import "../styles/all.scss";
 
 const CheckboxContainer = () => {
   const [amenities, setAmenities] = useState({
@@ -18,7 +20,7 @@ const CheckboxContainer = () => {
   };
 
   return (
-    <div className="p-8 mt-8 text-white">
+    <div className=" mt-8 text-white">
       <form>
         <div className="flex flex-wrap items-center justify-center mb-4">
           <label htmlFor="pool" className="checkbox-label">
