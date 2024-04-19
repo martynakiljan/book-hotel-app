@@ -5,6 +5,7 @@ import { hotels } from "../data/hotels";
 import Hotel from "../components/Hotel";
 import { HotelData } from "../type/type";
 
+
 const Hotels = () => {
   return (
     <div className="px-4 py-16 container mx-auto mt-auto mb-auto h-full">

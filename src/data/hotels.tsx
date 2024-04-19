@@ -47,7 +47,7 @@ export const hotels = [
     breakfastIncluded: true,
     smokingAllowed: false,
     src: hotel2,
-    featured: false,
+    featured: true,
     description:
       "Mountain Retreat Lodge is nestled in the mountains of Canada. Enjoy the serene surroundings and breathe in the fresh mountain air.",
   },
@@ -127,7 +127,7 @@ export const hotels = [
     breakfastIncluded: true,
     smokingAllowed: false,
     src: hotel6,
-    featured: true,
+    featured: false,
     description:
       "Grand Palace Hotel is located in the heart of Paris, France. Immerse yourself in the charm of the city of lights with luxurious accommodations.",
   },
@@ -147,7 +147,7 @@ export const hotels = [
     breakfastIncluded: true,
     smokingAllowed: false,
     src: hotel7,
-    featured: false,
+    featured: true,
     description:
       "Desert Mirage Resort offers a luxurious oasis in the desert of Dubai, United Arab Emirates. Experience the ultimate blend of comfort and adventure.",
   },

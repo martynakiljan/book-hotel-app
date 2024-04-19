@@ -21,10 +21,17 @@ export interface HotelData {
 }
 
 export interface HotelProps {
+  featured: boolean;
   id: string;
   name: string;
   city: string;
   country: string;
   pricePerNight: number;
   src: string;
+}
+export interface ReviewProps {
+  name: string;
+  review: string;
+  src: string;
+  stars: number;
 }

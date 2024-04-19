@@ -3,7 +3,7 @@
 import React from "react";
 import HotelNotFound from "./HotelNotFound";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { NavLink } from "react-router-dom";
 import {
   faDog,
   faSwimmingPool,
@@ -12,13 +12,14 @@ import {
   faParking,
   faCoffee,
   faSmokingBan,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { hotels } from "../data/hotels";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { HotelData } from "../type/type";
 import BackToAllHotels from "./BackToAllHotels";
+import Reviews from "./Reviews";
 
-// Icon definitions
 const icons: { [key: string]: any } = {
   petFriendly: faDog,
   pool: faSwimmingPool,
@@ -27,6 +28,7 @@ const icons: { [key: string]: any } = {
   parking: faParking,
   breakfastIncluded: faCoffee,
   smokingAllowed: faSmokingBan,
+  maxCapacity: faUsers,
 };
 
 const HotelDetails = () => {
@@ -57,7 +59,7 @@ const HotelDetails = () => {
           <p className="mb-4">{hotel.description}</p>
           <h4 className="text-lg font-bold mb-2">Overview</h4>
 
-          <div className="flex items-start justify-between mb-4">
+          <div className="flex items-start justify-between mb-4 w-1/2">
             <div>
               <p style={{ color: "rgb(12, 148, 136)" }} className="font-bold">
                 Check-In
@@ -71,22 +73,55 @@ const HotelDetails = () => {
               <p>until 12:00</p>
             </div>
           </div>
+
+          <div className="flex items-start justify-between mb-4 w-1/2">
+            <div>
+              <p style={{ color: "rgb(12, 148, 136)" }} className="font-bold">
+                Address
+              </p>
+              <p>
+                {hotel.city}, {hotel.country}
+              </p>
+            </div>
+          </div>
+
           <ul className="list-disc flex flex-wrap">
-            {Object.entries(icons).map(
-              ([key, icon]) =>
-                hotel[key as keyof HotelData] && (
-                  <li
-                    key={key}
-                    className="flex items-center mb-2 px-0 py-2"
-                    style={{ paddingRight: "15px" }}
-                  >
-                    <FontAwesomeIcon
-                      icon={icon}
-                      className="text-2xl text-rgb(12, 148, 136) mr-2"
-                    />
-                    {key}
-                  </li>
-                )
+            {Object.entries(icons).map(([key, icon]) =>
+              key === "maxCapacity" && hotel[key as keyof HotelData] ? (
+                <li
+                  key={key}
+                  className="flex items-center mt-5 px-0 py-2"
+                  style={{ paddingRight: "15px" }}
+                >
+                  <FontAwesomeIcon
+                    icon={icon}
+                    className="text-2xl text-rgb(12, 148, 136) mr-2"
+                  />
+                  <span style={{ fontStyle: "italic" }}>
+                    Maximum number of people: {hotel[key as keyof HotelData]}
+                  </span>
+                </li>
+              ) : hotel[key as keyof HotelData] && key !== "maxCapacity" ? (
+                <li
+                  key={key}
+                  className="flex items-center mb-2 px-0 py-2"
+                  style={{ paddingRight: "15px" }}
+                >
+                  <FontAwesomeIcon
+                    icon={icon}
+                    className="text-2xl text-rgb(12, 148, 136) mr-2"
+                  />
+                  {key === "petFriendly"
+                    ? "Pet Friendly"
+                    : key === "airConditioning"
+                    ? "Air Conditioning"
+                    : key === "breakfastIncluded"
+                    ? "Breakfast Included"
+                    : key === "smokingAllowed"
+                    ? "Smoking Allowed"
+                    : key}
+                </li>
+              ) : null
             )}
           </ul>
         </div>
@@ -115,7 +150,15 @@ const HotelDetails = () => {
                       >
                         +
                       </span>
-                      {key}
+                      {key === "petFriendly"
+                        ? "Pet Friendly"
+                        : key === "airConditioning"
+                        ? "Air Conditioning"
+                        : key === "breakfastIncluded"
+                        ? "Breakfast Included"
+                        : key === "smokingAllowed"
+                        ? "Smoking Allowed"
+                        : key}
                     </li>
                   )
               )}
@@ -128,19 +171,22 @@ const HotelDetails = () => {
                 City-Tax (4.65.- per person / Night)
               </p>
             </div>
-            <button
-              style={{
-                backgroundColor: "rgb(12, 148, 136)",
-                padding: "8px 16px",
-                borderRadius: "8px",
-              }}
-              className="text-white px-4 py-2 mt-4 rounded bg-teal-500"
-            >
-              Book Now
-            </button>
+            <NavLink to="/booking">
+              <button
+                style={{
+                  backgroundColor: "rgb(12, 148, 136)",
+                  padding: "8px 16px",
+                  borderRadius: "8px",
+                }}
+                className="text-white px-4 py-2 mt-4 rounded bg-teal-500"
+              >
+                Book Now
+              </button>
+            </NavLink>
           </div>
         </div>
       </div>
+      <Reviews/>
     </div>
   );
 };

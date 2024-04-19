@@ -9,6 +9,8 @@ import Vouchers from "./Vouchers";
 import Contact from "./Contact";
 import HotelDetails from "./HotelDatails";
 import Imprint from "./Imprint";
+import Booking from "./Booking";
+import BookingConfirmation from "./BookingConfirmation";
 
 const Sections = () => {
   return (
@@ -20,6 +22,8 @@ const Sections = () => {
       <Route path="/vouchers" element={<Vouchers />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/imprint" element={<Imprint />} />
+      <Route path="/booking" element={<Booking />} />
+      <Route path="/booking-confirmation" element={<BookingConfirmation />} />
     </Routes>
   );
 };

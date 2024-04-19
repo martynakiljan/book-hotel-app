@@ -27,8 +27,6 @@ const Menu = () => {
               <span className="font-normal leading-4"> BookHotel App</span>
             </NavLink>
           </div>
-
-          {/* Hamburger Icon for Mobile */}
           <div className="md:hidden">
             <FontAwesomeIcon
               icon={isOpen ? faTimes : faBars}
@@ -37,7 +35,7 @@ const Menu = () => {
             />
           </div>
 
-          {/* Mobile Menu */}
+
           {isOpen && (
             <div className="md:hidden fixed top-0 left-0 w-full h-full bg-white z-50">
               <div className="flex flex-col h-full justify-center items-center">
