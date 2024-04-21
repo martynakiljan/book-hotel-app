@@ -1,5 +1,13 @@
 /** @format */
 
+import {
+  ChangeEvent,
+  Dispatch,
+  FormEvent,
+  ReactNode,
+  SetStateAction,
+} from "react";
+
 export interface HotelData {
   id: string;
   name: string;
@@ -29,9 +37,29 @@ export interface HotelProps {
   pricePerNight: number;
   src: string;
 }
+
 export interface ReviewProps {
   name: string;
   review: string;
   src: string;
   stars: number;
 }
+
+export type BookingContextType = {
+  startDate: string;
+  setStartDate: Dispatch<SetStateAction<string>>;
+  endDate: string;
+  setEndDate: Dispatch<SetStateAction<string>>;
+  numOfGuest: number;
+  setNumberOfGuest: Dispatch<SetStateAction<number>>;
+  error: string;
+  handleStartDateChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleEndDateChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleNumberOfGuest: (event: ChangeEvent<HTMLInputElement>) => void;
+  isSubmitDisabled: boolean;
+  handleSubmit: (event: FormEvent) => void;
+};
+
+export type BookingProviderProps = {
+  children: ReactNode;
+};

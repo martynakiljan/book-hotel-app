@@ -15,10 +15,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "module": "CommonJS",
-    "typeRoots": [
-      "./src/types", // Twoja ścieżka do katalogu z definicjami typów
-      "./node_modules/@types" // Standardowa ścieżka do katalogu z definicjami typów
-    ]
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "downlevelIteration": true
   },
   "include": ["src"]
 }

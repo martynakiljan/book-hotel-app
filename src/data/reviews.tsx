@@ -12,13 +12,13 @@ import img9 from "../assets/reviews-images/review9.png";
 
 export const reviews = [
   {
-    name: "Emma",
+    name: "Liam",
     review: "Had a wonderful experience at this hotel. Everything was perfect!",
     src: img1,
     stars: 5,
   },
   {
-    name: "Liam",
+    name: "Cris",
     review: "Excellent staff and beautiful rooms. Would definitely recommend.",
     src: img2,
     stars: 4.5,
@@ -48,19 +48,19 @@ export const reviews = [
     stars: 5,
   },
   {
-    name: "Mia",
+    name: "Michael",
     review: "Absolutely loved my stay here. Can't wait to return.",
     src: img7,
     stars: 4,
   },
   {
-    name: "Benjamin",
+    name: "Alexandra",
     review: "Great value for money and friendly staff. Highly recommend.",
     src: img8,
     stars: 4.5,
   },
   {
-    name: "Charlotte",
+    name: "Ivan",
     review: "Stunning views and comfortable accommodations. Perfect getaway.",
     src: img9,
     stars: 5,

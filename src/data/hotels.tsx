@@ -29,7 +29,7 @@ export const hotels = [
     src: hotel1,
     featured: false,
     description:
-      "Sunset Cove Resort is located in Thailand. You can bring your pet along. You can swim in the pool and enjoy breakfast included in the price!",
+      "Sunset Cove Resort is a luxurious beachfront retreat located in the vibrant city of Phuket, Thailand. Built in 2010, our resort offers modern amenities and stunning views of the Andaman Sea. Our spacious rooms are equipped with state-of-the-art facilities, ensuring a comfortable stay for our guests. Whether you're lounging by the pool or exploring the bustling streets of Phuket, our friendly staff are dedicated to providing exceptional service. Experience the beauty of Thailand at Sunset Cove Resort.",
   },
   {
     id: crypto.randomUUID(),
@@ -49,7 +49,7 @@ export const hotels = [
     src: hotel2,
     featured: true,
     description:
-      "Mountain Retreat Lodge is nestled in the mountains of Canada. Enjoy the serene surroundings and breathe in the fresh mountain air.",
+      "Escape to the serene mountains of Banff, Canada, and indulge in a tranquil retreat at Mountain Retreat Lodge. Nestled amidst the breathtaking scenery of the Canadian Rockies, our lodge offers a peaceful oasis away from the hustle and bustle of city life. Built in 1995, our rustic yet charming lodge boasts cozy accommodations and warm hospitality. Whether you're hiking through the picturesque trails or unwinding by the fireplace, our attentive staff are here to cater to your every need. Experience the magic of the mountains at Mountain Retreat Lodge.",
   },
   {
     id: crypto.randomUUID(),
@@ -69,7 +69,7 @@ export const hotels = [
     src: hotel3,
     featured: false,
     description:
-      "Lakeview Haven Hotel is situated by the picturesque Lake Tahoe in the United States. Bring your furry friend along and enjoy a refreshing swim in the pool.",
+      "Experience the beauty of Lake Tahoe at Lakeview Haven Hotel. Situated along the picturesque shores of Lake Tahoe in the United States, our hotel offers unparalleled views of the crystal-clear waters and surrounding mountains. Built in 2005, our modern yet cozy accommodations provide the perfect blend of comfort and style. Whether you're kayaking on the lake or relaxing by the pool, our friendly staff are dedicated to ensuring a memorable stay. Discover the wonders of Lake Tahoe at Lakeview Haven Hotel.",
   },
   {
     id: crypto.randomUUID(),
@@ -89,7 +89,7 @@ export const hotels = [
     src: hotel4,
     featured: false,
     description:
-      "Forest Hideaway Inn is nestled in the heart of Germany's enchanting Black Forest. Experience tranquility surrounded by lush greenery.",
+      "Escape to the tranquility of Germany's enchanting Black Forest at Forest Hideaway Inn. Nestled amidst towering trees and pristine nature, our inn offers a serene retreat for nature lovers. Built in 1990, our cozy accommodations provide the perfect sanctuary after a day of exploring the forest trails. Whether you're birdwatching from your balcony or enjoying a leisurely stroll, our attentive staff are here to make your stay unforgettable. Experience the magic of the Black Forest at Forest Hideaway Inn.",
   },
   {
     id: crypto.randomUUID(),
@@ -109,7 +109,7 @@ export const hotels = [
     src: hotel5,
     featured: false,
     description:
-      "Seaside Oasis Retreat is the ultimate beachfront escape in Australia's Gold Coast. Enjoy stunning ocean views and relax by the pool.",
+      "Indulge in a luxurious beachfront getaway at Seaside Oasis Retreat. Located on the stunning Gold Coast of Australia, our resort offers breathtaking ocean views and unparalleled luxury. Built in 2008, our modern accommodations are designed to provide the ultimate comfort and relaxation. Whether you're lounging by the pool or exploring the vibrant city, our dedicated staff are committed to ensuring a memorable stay. Experience the beauty of the Gold Coast at Seaside Oasis Retreat.",
   },
   {
     id: crypto.randomUUID(),
@@ -129,7 +129,7 @@ export const hotels = [
     src: hotel6,
     featured: false,
     description:
-      "Grand Palace Hotel is located in the heart of Paris, France. Immerse yourself in the charm of the city of lights with luxurious accommodations.",
+      "Experience the epitome of luxury at Grand Palace Hotel. Located in the heart of Paris, France, our hotel offers unparalleled elegance and sophistication. Built in 1920, our historic building exudes charm and character, with lavish accommodations and impeccable service. Whether you're exploring the iconic landmarks or indulging in gourmet cuisine, our dedicated staff are here to ensure a truly unforgettable experience. Discover the magic of Paris at Grand Palace Hotel.",
   },
   {
     id: crypto.randomUUID(),
@@ -149,7 +149,7 @@ export const hotels = [
     src: hotel7,
     featured: true,
     description:
-      "Desert Mirage Resort offers a luxurious oasis in the desert of Dubai, United Arab Emirates. Experience the ultimate blend of comfort and adventure.",
+      "Escape to a luxurious oasis in the heart of the desert at Desert Mirage Resort. Located in Dubai, United Arab Emirates, our resort offers unparalleled luxury and comfort. Built in 2015, our modern accommodations are designed to provide the ultimate relaxation and rejuvenation. Whether you're lounging by the pool or exploring the vibrant city, our dedicated staff are here to ensure a memorable stay. Experience the beauty of the desert at Desert Mirage Resort.",
   },
   {
     id: crypto.randomUUID(),
@@ -169,7 +169,7 @@ export const hotels = [
     src: hotel8,
     featured: false,
     description:
-      "Island Paradise Hotel is nestled on a pristine island in the Maldives. Indulge in luxury and tranquility surrounded by crystal-clear waters.",
+      "Experience paradise on earth at Island Paradise Hotel. Nestled on a pristine island in the Maldives, our resort offers breathtaking ocean views and unparalleled luxury. Built in 2012, our modern accommodations are designed to provide the ultimate comfort and relaxation. Whether you're snorkeling in the crystal-clear waters or enjoying a romantic sunset dinner, our dedicated staff are here to ensure a truly unforgettable experience. Discover the magic of the Maldives at Island Paradise Hotel.",
   },
   {
     id: crypto.randomUUID(),
@@ -189,7 +189,7 @@ export const hotels = [
     src: hotel9,
     featured: false,
     description:
-      "Alpine Lodge offers stunning views of the Swiss Alps in Zermatt, Switzerland. Experience alpine luxury at its finest.",
+      "Experience alpine luxury at its finest at Alpine Lodge. Located in Zermatt, Switzerland, our lodge offers stunning views of the Swiss Alps and unparalleled comfort. Built in 2000, our cozy accommodations are designed to provide the ultimate relaxation and rejuvenation. Whether you're skiing on the pristine slopes or unwinding in the spa, our dedicated staff are here to ensure a memorable stay. Discover the magic of the mountains at Alpine Lodge.",
   },
   {
     id: crypto.randomUUID(),
@@ -209,6 +209,6 @@ export const hotels = [
     src: hotel10,
     featured: false,
     description:
-      "Tropical Retreat Resort is nestled in the lush rainforests of Manuel Antonio, Costa Rica. Discover exotic wildlife and unwind in tropical paradise.",
+      "Immerse yourself in the beauty of Costa Rica's rainforests at Tropical Retreat Resort. Located in Manuel Antonio, our resort offers a peaceful retreat amidst lush tropical vegetation and abundant wildlife. Built in 2003, our eco-friendly accommodations are designed to blend seamlessly with the natural surroundings. Whether you're hiking through the jungle or relaxing by the pool, our attentive staff are here to ensure a memorable stay. Experience the magic of the rainforest at Tropical Retreat Resort.",
   },
 ];

@@ -14,10 +14,7 @@ const Reviews: React.FC = () => {
 
   return (
     <div className="mx-auto w-70">
-      <h2
-        className="text-2xl font-semibold mt-10 mb-10"
-        style={{ color: "rgb(12, 148, 136)" }}
-      >
+      <h2 className="text-2xl font-semibold mt-10 mb-10">
         See what others say:
       </h2>
       {randomReviews.map((review, index) => (

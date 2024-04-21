@@ -24,7 +24,7 @@ const Menu = () => {
           <div className="text-gray-800 font-bold text-xl">
             <NavLink to="/" className="text-teal-600">
               <FontAwesomeIcon icon={faSuitcaseRolling} />
-              <span className="font-normal leading-4"> BookHotel App</span>
+              <span className="font-normal leading-4 px-1">BookHotel App</span>
             </NavLink>
           </div>
           <div className="md:hidden">
@@ -34,7 +34,6 @@ const Menu = () => {
               className="text-gray-800 text-xl cursor-pointer"
             />
           </div>
-
 
           {isOpen && (
             <div className="md:hidden fixed top-0 left-0 w-full h-full bg-white z-50">
