@@ -74,7 +74,6 @@ const Vouchers = () => {
                 500 CHF
               </button>
             </div>
-            {/* Select z wyborem ilości i obok cena */}
             <div className="flex items-center mb-4">
               <select
                 value={selectedValue}
@@ -91,7 +90,6 @@ const Vouchers = () => {
                 Price: {selectedValue ? `${selectedValue} CHF` : "0"} CHF{" "}
               </span>
             </div>
-            {/* Przycisk zamówienia */}
             <button
               onClick={handleOrder}
               style={{
