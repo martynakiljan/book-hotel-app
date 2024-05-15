@@ -13,7 +13,6 @@ const Home = () => {
       <div className="header-img__mask"></div>
       <div className="booking__form ">
         <MainForm isButtonSubmitHidden={isButtonSubmitHidden} />
-        <SelectForm />
       </div>
     </div>
   );

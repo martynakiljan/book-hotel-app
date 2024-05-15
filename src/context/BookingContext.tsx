@@ -1,90 +1,93 @@
 /** @format */
 
-import React, {
-  createContext,
-  useContext,
-  useState,
-  FormEvent,
-  ChangeEvent,
-} from "react";
-import { useNavigate } from "react-router-dom";
-import { BookingContextType } from "../type/type";
-import { BookingProviderProps } from "../type/type";
+import React, { createContext, useContext, useState, FormEvent, ChangeEvent } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { BookingContextType } from '../type/type'
+import { BookingProviderProps } from '../type/type'
 
 // create context
-const BookingContext = createContext<BookingContextType | undefined>(undefined);
+const BookingContext = createContext<BookingContextType | undefined>(undefined)
 
-// Hook for context
+// hook for context
 export const useBooking = () => {
-  const context = useContext(BookingContext);
-  if (!context) {
-    throw new Error("useBooking must be used within a BookingProvider");
-  }
-  return context;
-};
+	const context = useContext(BookingContext)
+	if (!context) {
+		throw new Error('useBooking must be used within a BookingProvider')
+	}
+	return context
+}
 
 // provider
+export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) => {
+	const navigate = useNavigate()
+	const [error, setError] = useState('')
+	const [startDate, setStartDate] = useState('')
+	const [endDate, setEndDate] = useState('')
+	const [numOfGuest, setNumberOfGuest] = useState(0)
 
-export const BookingProvider: React.FC<BookingProviderProps> = ({
-  children,
-}) => {
-  const navigate = useNavigate();
-  const [error, setError] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [numOfGuest, setNumberOfGuest] = useState(0);
+	//sort//
 
-  const handleNumberOfGuest = (event: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = parseInt(event.target.value);
-    setNumberOfGuest(inputValue);
-  };
+	const [sortBy, setSortBy] = useState('')
+	const [selectedSortOption, setSelectedSortOption] = useState('')
 
-  const handleStartDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setStartDate(event.target.value);
-  };
+	const handleSortChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
+		setSelectedSortOption(e.target.value)
+	}
 
-  const handleEndDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setEndDate(event.target.value);
-  };
+	const handleNumberOfGuest = (event: ChangeEvent<HTMLInputElement>) => {
+		const inputValue = parseInt(event.target.value)
+		setNumberOfGuest(inputValue)
+	}
 
-  const isSubmitDisabled = !startDate || !endDate || !numOfGuest;
+	const handleStartDateChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setStartDate(event.target.value)
+	}
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    if (startDate > endDate) {
-      setError("Start date cannot be later than end date.");
-      return;
-    }
-    const today = new Date().toISOString().split("T")[0];
+	const handleEndDateChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setEndDate(event.target.value)
+	}
 
-    if (startDate < today || endDate < today) {
-      setError("Cannot select a past date.");
-      return;
-    }
-    setError("");
-    setTimeout(() => {
-      navigate("/hotels");
-    }, 200);
-  };
+	const isSubmitDisabled = !startDate || !endDate || !numOfGuest
 
-  return (
-    <BookingContext.Provider
-      value={{
-        startDate,
-        setStartDate,
-        endDate,
-        setEndDate,
-        numOfGuest,
-        setNumberOfGuest,
-        error,
-        handleStartDateChange,
-        handleNumberOfGuest,
-        handleEndDateChange,
-        isSubmitDisabled,
-        handleSubmit,
-      }}
-    >
-      {children}
-    </BookingContext.Provider>
-  );
-};
+	const handleSubmit = (event: FormEvent) => {
+		event.preventDefault()
+		if (startDate > endDate) {
+			setError('Start date cannot be later than end date.')
+			return
+		}
+
+		const today = new Date().toISOString().split('T')[0]
+
+		if (startDate < today || endDate < today) {
+			setError('Cannot select a past date.')
+			return
+		}
+		setError('')
+		setTimeout(() => {
+			navigate('/hotels')
+		}, 200)
+	}
+
+	return (
+		<BookingContext.Provider
+			value={{
+				startDate,
+				setStartDate,
+				endDate,
+				setEndDate,
+				numOfGuest,
+				setNumberOfGuest,
+				error,
+				handleStartDateChange,
+				handleNumberOfGuest,
+				handleEndDateChange,
+				isSubmitDisabled,
+				handleSubmit,
+				sortBy,
+				handleSortChange,
+			}}
+		>
+			{children}
+		</BookingContext.Provider>
+	)
+}

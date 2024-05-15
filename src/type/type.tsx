@@ -52,8 +52,20 @@ export type BookingContextType = {
 	handleNumberOfGuest: (event: ChangeEvent<HTMLInputElement>) => void
 	isSubmitDisabled: boolean
 	handleSubmit: (event: FormEvent) => void
+	sortBy: string
+	handleSortChange: (event: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => void
 }
 
 export type BookingProviderProps = {
 	children: ReactNode
+}
+
+export type sortOptions = {
+	pool: boolean
+	airConditioning: boolean
+	breakfastIncluded: boolean
+	balcony: boolean
+	freeCancellation: boolean
+	childrenFriendly: boolean
+	petFriendly: boolean
 }
