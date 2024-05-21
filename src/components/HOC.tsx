@@ -1,7 +1,7 @@
 /** @format */
 
 import React from 'react'
-import { HotelProps } from '../type/type'
+import { HotelProps } from '../type'
 import Highlight from './Highlight'
 
 const withHighlight = (WrappedComponent: React.FC<{ hotel: HotelProps }>): React.FC<{ hotel: HotelProps }> => {
@@ -21,20 +21,3 @@ const withHighlight = (WrappedComponent: React.FC<{ hotel: HotelProps }>): React
 }
 
 export default withHighlight
-
-// const withHighlight = (WrappedComponent) => {
-//   const WithFeaturedHighlight = ({ hotel }) => {
-//     // Logika HOC
-//     if (hotel.featured) {
-//       return (
-//         <Highlight>
-//           <WrappedComponent hotel={hotel} />
-//         </Highlight>
-//       );
-//     } else {
-//       return <WrappedComponent hotel={hotel} />;
-//     }
-//   };
-
-//   return WithFeaturedHighlight;
-// };

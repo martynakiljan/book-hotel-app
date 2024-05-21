@@ -6,28 +6,28 @@ import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg
 import { useEffect, useState } from 'react'
 
 const Contact = () => {
-	const [formCorrect, setFormCorrect] = useState(false)
+	const [showMessage, setShowMessage] = useState(false)
 
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isSubmitted },
 		reset,
 	} = useForm()
 
 	const onSubmit = () => {
-		setFormCorrect(true)
+		setShowMessage(true)
 		reset()
 	}
 
 	useEffect(() => {
-		if (formCorrect) {
+		if (isSubmitted) {
 			const timer = setTimeout(() => {
-				setFormCorrect(false)
+				setShowMessage(false)
 			}, 1000)
 			return () => clearTimeout(timer)
 		}
-	}, [formCorrect])
+	}, [isSubmitted])
 
 	return (
 		<div className='py-16 px-4 container mx-auto mt-auto mb-auto h-full'>
@@ -100,7 +100,7 @@ const Contact = () => {
 						>
 							Send
 						</button>
-						{formCorrect ? <p className='text-teal-600 py-2'>Thank you!</p> : null}
+						{showMessage ? <p className='text-teal-600 py-2'>Thank you!</p> : null}
 					</form>
 				</div>
 				<div>

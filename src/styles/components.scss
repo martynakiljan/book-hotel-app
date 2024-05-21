@@ -1,144 +1,150 @@
-@import "./mixins.scss";
+@import './mixins.scss';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 400;
 }
 
 .nav {
-    height: 80px;
+	height: 80px;
 }
 
 .header-img {
-    background-image: url(../assets/header-images/header2.jpg);
-    width: 100%;
-    height: calc(100vh - 80px);
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+	background-image: url(../assets/header-images/header2.jpg);
+	width: 100%;
+	height: calc(100vh - 80px);
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
 }
 
 .header-img__mask {
-    position: absolute;
-    top: 80px;
-    left: 0;
-    right: 0;
-    height: calc(100vh - 80px);
-    width: 100%;
-    background-color: rgb(107 114 128);
-    opacity: 0.6;
+	position: absolute;
+	top: 80px;
+	left: 0;
+	right: 0;
+	height: calc(100vh - 80px);
+	width: 100%;
+	background-color: rgb(107 114 128);
+	opacity: 0.6;
 }
 
 .booking__form {
-    position: absolute;
-    top: 0;
+	position: absolute;
+	top: 0;
 }
 
 .w-dvw {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
 }
 
-
 .booking__form {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
 
-    @include md-min {
-        top: 50%;
-    }
+	@include md-min {
+		top: 50%;
+	}
 }
 
 .font-medium {
-    text-wrap: nowrap;
+	text-wrap: nowrap;
 }
 
 .checkbox-label {
-    padding: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 300;
+	padding: 5px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 300;
 }
 
 .custom-checbox {
-    @include sm-max {
-        font-size: 12px;
-    }
+	@include sm-max {
+		font-size: 12px;
+	}
 }
 
 .active {
-    color: #0c9488;
+	color: #0c9488;
 
-    .footer & {
-        color: inherit;
-    }
+	.footer & {
+		color: inherit;
+	}
 }
 
 img {
-    object-fit: cover;
+	object-fit: cover;
 }
 
 .hotel-img {
-    max-height: 220px;
+	max-height: 220px;
 }
-
 
 .checkbox-label {
-    font-size: 12px;
+	font-size: 12px;
 }
 
-.custom-checkbox input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 2px solid white;
-    outline: none;
-    transition: background-color 0.3s, border-color 0.3s;
-    position: relative;
+.custom-checkbox input[type='checkbox'] {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: 2px solid white;
+	outline: none;
+	transition: background-color 0.3s, border-color 0.3s;
+	position: relative;
 }
 
-.custom-checkbox input[type="checkbox"]:checked::after {
-    content: "";
-    display: block;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: white;
-    border: 2px seagreen;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+.custom-checkbox input[type='checkbox']:checked::after {
+	content: '';
+	display: block;
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	background-color: white;
+	border: 2px seagreen;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+input::-webkit-datetime-edit-day-field:focus,
+input::-webkit-datetime-edit-month-field:focus,
+input::-webkit-datetime-edit-year-field:focus {
+	background-color: #0c9488;
+	color: white;
+	outline: none;
 }
 
 .box-price {
-    font-family: "Lilita One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+	font-family: 'Lilita One', sans-serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
 .list-disc {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-    align-items: flex-start;
-    flex-wrap: wrap;
+	align-items: flex-start;
+	flex-wrap: wrap;
 
-    svg {
-        width: 50px;
-    }
+	svg {
+		width: 50px;
+	}
 }

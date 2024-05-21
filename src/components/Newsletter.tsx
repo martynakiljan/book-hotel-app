@@ -4,27 +4,27 @@ import '../styles/all.scss'
 import { useEffect, useState } from 'react'
 
 const Newsletter = () => {
-	const [formCorrect, setFormCorrect] = useState(false)
+	const [showMessage, setShowMessage] = useState(false)
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isSubmitted },
 		reset,
 	} = useForm()
 
 	const onSubmit = () => {
-		setFormCorrect(true)
+		setShowMessage(true)
 		reset()
 	}
 
 	useEffect(() => {
-		if (formCorrect) {
+		if (isSubmitted) {
 			const timer = setTimeout(() => {
-				setFormCorrect(false)
+				setShowMessage(false)
 			}, 2000)
 			return () => clearTimeout(timer)
 		}
-	}, [formCorrect])
+	}, [isSubmitted])
 
 	return (
 		<div className='bg-gray-100 py-16 px-4 md:px-0'>
@@ -51,7 +51,7 @@ const Newsletter = () => {
 					</button>
 				</form>
 				{errors.email && <p className='text-red-500 py-2'>Please enter a valid email address.</p>}
-				{formCorrect ? (
+				{showMessage ? (
 					<p className='text-teal-600 py-2'>Thank you! you have successfully subscribed to the newsletter.</p>
 				) : null}
 			</div>

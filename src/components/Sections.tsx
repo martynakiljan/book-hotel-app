@@ -7,7 +7,7 @@ import About from "./About";
 import Home from "./Home";
 import Vouchers from "./Vouchers";
 import Contact from "./Contact";
-import HotelDetails from "./HotelDatails";
+import HotelDetails from "./HotelDetails";
 import Imprint from "./Imprint";
 import Booking from "./Booking";
 import BookingConfirmation from "./BookingConfirmation";

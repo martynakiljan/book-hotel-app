@@ -2,26 +2,6 @@
 
 import { ChangeEvent, Dispatch, FormEvent, ReactNode, SetStateAction } from 'react'
 
-export interface HotelData {
-	id: string
-	name: string
-	country: string
-	city: string
-	location: string
-	pricePerNight: number
-	maxCapacity: number
-	petFriendly: boolean
-	pool: boolean
-	airConditioning: boolean
-	balcony: boolean
-	parking: boolean
-	breakfastIncluded: boolean
-	smokingAllowed: boolean
-	src: string
-	awarded: boolean
-	description: string
-}
-
 export interface HotelProps {
 	awarded: boolean
 	id: string
@@ -30,6 +10,19 @@ export interface HotelProps {
 	country: string
 	pricePerNight: number
 	src: string
+}
+
+export interface HotelData extends HotelProps {
+	location: string
+	maxCapacity: number
+	petFriendly: boolean
+	pool: boolean
+	airConditioning: boolean
+	balcony: boolean
+	parking: boolean
+	breakfastIncluded: boolean
+	smokingAllowed: boolean
+	description: string
 }
 
 export interface ReviewProps {
@@ -44,8 +37,8 @@ export type BookingContextType = {
 	setStartDate: Dispatch<SetStateAction<string>>
 	endDate: string
 	setEndDate: Dispatch<SetStateAction<string>>
-	numOfGuest: number
-	setNumberOfGuest: Dispatch<SetStateAction<number>>
+	numberOfGuests: number
+	setNumberOfGuests: Dispatch<SetStateAction<number>>
 	error: string
 	handleStartDateChange: (event: ChangeEvent<HTMLInputElement>) => void
 	handleEndDateChange: (event: ChangeEvent<HTMLInputElement>) => void
@@ -54,6 +47,9 @@ export type BookingContextType = {
 	handleSubmit: (event: FormEvent) => void
 	sortBy: string
 	handleSortChange: (event: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => void
+	handleCheckboxChange: (event: ChangeEvent<HTMLInputElement>) => void
+	selectedOptions: sortOptions
+	setSelectedOptions: Dispatch<SetStateAction<sortOptions>>
 }
 
 export type BookingProviderProps = {

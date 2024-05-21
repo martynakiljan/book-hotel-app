@@ -2,8 +2,8 @@
 
 import React, { createContext, useContext, useState, FormEvent, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { BookingContextType } from '../type/type'
-import { BookingProviderProps } from '../type/type'
+import { BookingContextType, sortOptions } from '../type'
+import { BookingProviderProps } from '../type'
 
 // create context
 const BookingContext = createContext<BookingContextType | undefined>(undefined)
@@ -23,7 +23,23 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 	const [error, setError] = useState('')
 	const [startDate, setStartDate] = useState('')
 	const [endDate, setEndDate] = useState('')
-	const [numOfGuest, setNumberOfGuest] = useState(0)
+	const [numberOfGuests, setNumberOfGuests] = useState(0)
+
+	const [selectedOptions, setSelectedOptions] = useState<sortOptions>({
+		pool: false,
+		airConditioning: false,
+		breakfastIncluded: false,
+		balcony: false,
+		freeCancellation: false,
+		childrenFriendly: false,
+		petFriendly: false,
+	})
+
+	const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const { name, checked } = event.target
+		setSelectedOptions(prevState => ({ ...prevState, [name]: checked }))
+		console.log(name)
+	}
 
 	//sort//
 
@@ -32,11 +48,12 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 
 	const handleSortChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
 		setSelectedSortOption(e.target.value)
+		setSortBy(e.target.value)
 	}
 
 	const handleNumberOfGuest = (event: ChangeEvent<HTMLInputElement>) => {
 		const inputValue = parseInt(event.target.value)
-		setNumberOfGuest(inputValue)
+		setNumberOfGuests(inputValue)
 	}
 
 	const handleStartDateChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +64,7 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 		setEndDate(event.target.value)
 	}
 
-	const isSubmitDisabled = !startDate || !endDate || !numOfGuest
+	const isSubmitDisabled = !startDate || !endDate || !numberOfGuests
 
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault()
@@ -58,14 +75,16 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 
 		const today = new Date().toISOString().split('T')[0]
 
-		if (startDate < today || endDate < today) {
+		if (endDate < today) {
 			setError('Cannot select a past date.')
 			return
 		}
 		setError('')
-		setTimeout(() => {
-			navigate('/hotels')
-		}, 200)
+
+		const filters = {
+			selectedOptions,
+		}
+		navigate('/hotels', { state: filters })
 	}
 
 	return (
@@ -75,8 +94,8 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 				setStartDate,
 				endDate,
 				setEndDate,
-				numOfGuest,
-				setNumberOfGuest,
+				numberOfGuests,
+				setNumberOfGuests,
 				error,
 				handleStartDateChange,
 				handleNumberOfGuest,
@@ -85,6 +104,9 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 				handleSubmit,
 				sortBy,
 				handleSortChange,
+				handleCheckboxChange,
+				selectedOptions,
+				setSelectedOptions,
 			}}
 		>
 			{children}

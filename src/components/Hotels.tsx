@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { hotels } from '../data/hotels'
 import Hotel from '../components/Hotel'
-import { HotelData } from '../type/type'
+import { HotelData } from '../type'
 import InfoAboutStay from './InfoAboutStay'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faChevronDown } from '@fortawesome/free-solid-svg-icons'
@@ -9,11 +9,11 @@ import { sortHotels } from '../helpers/helpers'
 import { useBooking } from '../context/BookingContext'
 
 const Hotels = () => {
-	const { sortBy, handleSortChange } = useBooking()
+	const { sortBy, handleSortChange, selectedOptions } = useBooking()
 
 	//pagination //
 	const [currentPage, setCurrentPage] = useState(1)
-	const [hotelsPerPage] = useState(4)
+	const hotelsPerPage = 4
 	const [searchQuery, setSearchQuery] = useState('')
 
 	const indexOfLastHotel = currentPage * hotelsPerPage
@@ -25,14 +25,19 @@ const Hotels = () => {
 	//search//
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchQuery(e.target.value)
+		setCurrentPage(1)
 	}
+
+	//filter//
+	const filteredHotels = sortHotels(currentHotels, sortBy, searchQuery, selectedOptions)
+	console.log(filteredHotels)
 
 	return (
 		<div className='px-4 py-16 container mx-auto mt-auto mb-auto h-full'>
 			<InfoAboutStay />
 			<div className='flex items-center'>
 				<h1 className='text-3xl font-bold mr-4'>Hotels</h1>
-				<div className='flex items-end'>
+				<div className='flex items-end mb-4'>
 					<div className='relative w-full max-w-xs mx-4'>
 						<label htmlFor='sort' className='block text-m font-medium text-teal-600'>
 							Sort by:
@@ -66,10 +71,8 @@ const Hotels = () => {
 					</div>
 				</div>
 			</div>
-			{sortHotels(currentHotels, sortBy, searchQuery).length > 0 ? (
-				sortHotels(currentHotels, sortBy, searchQuery).map((hotel: HotelData, index: number) => (
-					<Hotel key={index} hotel={hotel} />
-				))
+			{filteredHotels.length > 0 ? (
+				filteredHotels.map((hotel: HotelData, index: number) => <Hotel key={index} hotel={hotel} />)
 			) : (
 				<p className='text-lg text-gray-600 mt-10'>Sorry! No hotels matching your criteria found :( </p>
 			)}

@@ -1,24 +1,11 @@
 /** @format */
 
-import React, { ChangeEvent, Dispatch, SetStateAction, useState } from 'react'
+import React from 'react'
 import '../styles/all.scss'
-import { sortOptions } from '../type/type'
+import { useBooking } from '../context/BookingContext'
 
 const CheckboxContainer: React.FC = () => {
-	const [selectedOptions, setSelectedOptions] = useState<sortOptions>({
-		pool: false,
-		airConditioning: false,
-		breakfastIncluded: false,
-		balcony: false,
-		freeCancellation: false,
-		childrenFriendly: false,
-		petFriendly: false,
-	})
-
-	const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, checked } = event.target
-		setSelectedOptions(prevState => ({ ...prevState, [name]: checked }))
-	}
+	const { handleCheckboxChange, selectedOptions } = useBooking()
 
 	return (
 		<div className='mt-8 text-white'>
@@ -79,35 +66,6 @@ const CheckboxContainer: React.FC = () => {
 						</span>
 						<span className='ml-2'>Balcony</span>
 					</label>
-
-					<label htmlFor='freeCancellation' className='checkbox-label'>
-						<span className='custom-checkbox'>
-							<input
-								type='checkbox'
-								id='freeCancellation'
-								name='freeCancellation'
-								value='freeCancellation'
-								checked={selectedOptions.freeCancellation}
-								onChange={handleCheckboxChange}
-							/>
-						</span>
-						<span className='ml-2'>Free Cancellation</span>
-					</label>
-
-					<label htmlFor='childrenFriendly' className='checkbox-label'>
-						<span className='custom-checkbox'>
-							<input
-								type='checkbox'
-								id='childrenFriendly'
-								name='childrenFriendly'
-								value='childrenFriendly'
-								checked={selectedOptions.childrenFriendly}
-								onChange={e => handleCheckboxChange(e, setSelectedOptions, selectedOptions)}
-							/>
-						</span>
-						<span className='ml-2'>Children Friendly</span>
-					</label>
-
 					<label htmlFor='petFriendly' className='checkbox-label'>
 						<span className='custom-checkbox'>
 							<input
@@ -116,7 +74,7 @@ const CheckboxContainer: React.FC = () => {
 								name='petFriendly'
 								value='petFriendly'
 								checked={selectedOptions.petFriendly}
-								onChange={e => handleCheckboxChange(e, setSelectedOptions, selectedOptions)}
+								onChange={handleCheckboxChange}
 							/>
 						</span>
 						<span className='ml-2'>Pet Friendly</span>
