@@ -13,14 +13,7 @@ const CheckboxContainer: React.FC = () => {
 				<div className='flex flex-wrap items-center justify-center mb-4'>
 					<label htmlFor='pool' className='checkbox-label'>
 						<span className='custom-checkbox'>
-							<input
-								type='checkbox'
-								id='pool'
-								name='pool'
-								value='pool'
-								checked={selectedOptions.pool}
-								onChange={handleCheckboxChange}
-							/>
+							<input type='checkbox' id='pool' name='pool' value='pool' onChange={handleCheckboxChange} />
 						</span>
 						<span className='ml-2'>Pool</span>
 					</label>
@@ -32,7 +25,6 @@ const CheckboxContainer: React.FC = () => {
 								id='airConditioning'
 								name='airConditioning'
 								value='airConditioning'
-								checked={selectedOptions.airConditioning}
 								onChange={handleCheckboxChange}
 							/>
 						</span>
@@ -46,7 +38,6 @@ const CheckboxContainer: React.FC = () => {
 								id='breakfastIncluded'
 								name='breakfastIncluded'
 								value='breakfastIncluded'
-								checked={selectedOptions.breakfastIncluded}
 								onChange={handleCheckboxChange}
 							/>
 						</span>
@@ -55,14 +46,7 @@ const CheckboxContainer: React.FC = () => {
 
 					<label htmlFor='balcony' className='checkbox-label'>
 						<span className='custom-checkbox'>
-							<input
-								type='checkbox'
-								id='balcony'
-								name='balcony'
-								value='balcony'
-								checked={selectedOptions.balcony}
-								onChange={handleCheckboxChange}
-							/>
+							<input type='checkbox' id='balcony' name='balcony' value='balcony' onChange={handleCheckboxChange} />
 						</span>
 						<span className='ml-2'>Balcony</span>
 					</label>
@@ -73,7 +57,6 @@ const CheckboxContainer: React.FC = () => {
 								id='petFriendly'
 								name='petFriendly'
 								value='petFriendly'
-								checked={selectedOptions.petFriendly}
 								onChange={handleCheckboxChange}
 							/>
 						</span>
