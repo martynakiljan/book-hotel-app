@@ -1,7 +1,6 @@
 import { HotelData, sortOptions } from '../type'
 
 export const sortHotels = (hotels: HotelData[], sortBy: string, searchQuery: string, selectedOptions: sortOptions) => {
-	console.log(selectedOptions)
 
 	const filteredHotels = hotels.filter(hotel => {
 		const optionsMatch =
@@ -11,7 +10,6 @@ export const sortHotels = (hotels: HotelData[], sortBy: string, searchQuery: str
 			(selectedOptions.balcony || hotel.balcony) &&
 			(selectedOptions.petFriendly || hotel.petFriendly)
 
-		console.log(selectedOptions)
 
 		const nameMatch = hotel.name.toLowerCase().includes(searchQuery.toLowerCase())
 		const descriptionMatch = hotel.description.toLowerCase().includes(searchQuery.toLowerCase())

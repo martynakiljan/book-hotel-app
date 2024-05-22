@@ -1,9 +1,9 @@
 /** @format */
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import HotelNotFound from './HotelNotFound'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import {
 	faDog,
 	faSwimmingPool,
@@ -34,7 +34,8 @@ const icons: { [key: string]: any } = {
 
 const HotelDetails = () => {
 	const { id } = useParams<{ id: string }>()
-	const hotel: HotelData | undefined = hotels.find(hotel => hotel.id === id)
+	const location = useLocation()
+	const hotel: HotelData | undefined = location.state?.hotel || hotels.find(hotel => hotel.id === id)
 
 	const [isButtonSubmitHidden] = useState<boolean>(true)
 
@@ -145,7 +146,7 @@ const HotelDetails = () => {
 							<h4 className='text-lg font-bold text-rgb(12, 148, 136)'>Exclusive:</h4>
 							<p className='text-gray-600'>City-Tax (4.65.- per person / Night)</p>
 						</div>
-						<NavLink to='/booking'>
+						<NavLink to='/booking' state={{ hotel }}>
 							<button
 								style={{
 									backgroundColor: 'rgb(12, 148, 136)',
@@ -160,7 +161,7 @@ const HotelDetails = () => {
 					</div>
 				</div>
 			</div>
-			<MainForm isButtonSubmitHidden={isButtonSubmitHidden} />
+			{/* <MainForm isButtonSubmitHidden={isButtonSubmitHidden} /> */}
 			<Reviews />
 		</div>
 	)

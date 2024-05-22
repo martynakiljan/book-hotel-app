@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { hotels } from '../data/hotels'
 import Hotel from '../components/Hotel'
-import { HotelData } from '../type'
+import { HotelData, HotelProps } from '../type'
 import InfoAboutStay from './InfoAboutStay'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faChevronDown } from '@fortawesome/free-solid-svg-icons'
