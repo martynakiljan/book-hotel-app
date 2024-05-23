@@ -19,7 +19,7 @@ import { useParams } from 'react-router-dom'
 import { HotelData } from '../type'
 import BackToAllHotels from './BackToAllHotels'
 import Reviews from './Reviews'
-import MainForm from './MainForm'
+import MainForm from './DateForm'
 
 const icons: { [key: string]: any } = {
 	petFriendly: faDog,

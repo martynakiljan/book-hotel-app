@@ -1,10 +1,9 @@
 /** @format */
 
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { useEffect, useState } from 'react'
-import Form  from './Form'
+import Form from './Form'
 
 const Contact = () => {
 	const [showMessage, setShowMessage] = useState(false)
@@ -27,7 +26,7 @@ const Contact = () => {
 			<h3 className='text-3xl font-bold dark:text-white my-8 '>Contact us</h3>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-8 my-4'>
 				<div>
-				<Form onSubmit={onSubmit} showMessage={showMessage} showPhoneInput={false}/>
+					<Form onSubmit={onSubmit} showMessage={showMessage} showPhoneInput={false} showButton={true} />
 				</div>
 				<div>
 					<h2 className='text-xl font-bold mb-4'>Social Media</h2>

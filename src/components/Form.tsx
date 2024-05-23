@@ -1,5 +1,5 @@
 import React from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 type FormInputs = {
 	firstName: string
@@ -8,13 +8,15 @@ type FormInputs = {
 	phone: string
 	message: string
 }
+
 interface FormProps {
 	onSubmit: () => void
 	showMessage: boolean
 	showPhoneInput: boolean
+	showButton: boolean
 }
 
-const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput }) => {
+const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, showButton }) => {
 	const {
 		register,
 		handleSubmit,
@@ -74,7 +76,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput }) =>
 					<input
 						{...register('phone', {
 							required: true,
-							pattern: /^\d+$/, // pattern for numbers only
+							pattern: /^\d+$/,
 						})}
 						type='tel'
 						id='phone'
@@ -95,17 +97,20 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput }) =>
 				></textarea>
 				{errors.message && <p className='text-red-500 text-xs'>Message must be at least 10 characters long.</p>}
 			</div>
-			<button
-				style={{
-					backgroundColor: 'rgb(12, 148, 136)',
-					padding: '8px 16px',
-					borderRadius: '8px',
-				}}
-				type='submit'
-				className='bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600'
-			>
-				Send
-			</button>
+			{showButton && (
+				<button
+					style={{
+						backgroundColor: 'rgb(12, 148, 136)',
+						padding: '8px 16px',
+						borderRadius: '8px',
+					}}
+					type='submit'
+					className='bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600'
+				>
+					Send
+				</button>
+			)}
+
 			{showMessage ? <p className='text-teal-600 py-2'>Thank you!</p> : null}
 		</form>
 	)
