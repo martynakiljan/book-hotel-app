@@ -6,7 +6,7 @@ import { faInstagram, faFacebook, faYoutube } from '@fortawesome/free-brands-svg
 import { NavLink } from 'react-router-dom'
 const Footer = () => {
 	return (
-		<div className='bg-teal-600 text-gray-100 '>
+		<div className='bg-teal-600 text-gray-100  py-16 px-4'>
 			<div className='mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 container mx-auto pt-6 pb-6'>
 				<div className='text-3xl'>
 					<FontAwesomeIcon icon={faSuitcaseRolling} className='text-3xl' />

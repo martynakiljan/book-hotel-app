@@ -50,6 +50,9 @@ export type BookingContextType = {
 	handleCheckboxChange: (event: ChangeEvent<HTMLInputElement>) => void
 	selectedOptions: sortOptions
 	setSelectedOptions: Dispatch<SetStateAction<sortOptions>>
+	numberOfDays: number
+	totalPrice: number
+	tax: number
 }
 
 export type BookingProviderProps = {

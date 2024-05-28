@@ -24,7 +24,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, show
 	} = useForm<FormInputs>()
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
 			<div className='mb-4'>
 				<label htmlFor='firstName' className='block text-gray-700'>
 					First Name
@@ -85,7 +85,6 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, show
 					{errors.phone && <p className='text-red-500 text-xs'>Please enter a valid phone number.</p>}
 				</div>
 			)}
-
 			<div className='mb-4'>
 				<label htmlFor='message' className='block text-gray-700'>
 					Message
@@ -110,7 +109,6 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, show
 					Send
 				</button>
 			)}
-
 			{showMessage ? <p className='text-teal-600 py-2'>Thank you!</p> : null}
 		</form>
 	)

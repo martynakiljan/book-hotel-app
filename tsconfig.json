@@ -18,5 +18,5 @@
 		"typeRoots": ["./src/types", "./node_modules/@types"],
 		"downlevelIteration": true
 	},
-	"include": ["src", "src/type.ts"]
+	"include": ["src", "src/type.ts", "src/components/HotelDetails.tsx"]
 }

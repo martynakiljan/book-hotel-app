@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { createContext, useContext, useState, FormEvent, ChangeEvent } from 'react'
+import React, { createContext, useContext, useState, FormEvent, ChangeEvent, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { BookingContextType, sortOptions } from '../type'
 import { BookingProviderProps } from '../type'
@@ -23,7 +23,13 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 	const [error, setError] = useState('')
 	const [startDate, setStartDate] = useState('')
 	const [endDate, setEndDate] = useState('')
-	const [numberOfGuests, setNumberOfGuests] = useState(0)
+	const [numberOfGuests, setNumberOfGuests] = useState<number>(1)
+
+	useEffect(() => {
+		if (isNaN(numberOfGuests)) {
+			setNumberOfGuests(1)
+		}
+	}, [numberOfGuests])
 
 	const [selectedOptions, setSelectedOptions] = useState<sortOptions>({
 		pool: false,
@@ -58,6 +64,7 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 
 	const handleStartDateChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setStartDate(event.target.value)
+		console.log(event.target.value)
 	}
 
 	const handleEndDateChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -87,6 +94,28 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 		navigate('/hotels', { state: filters })
 	}
 
+	// calculate days for total price  //
+
+	const [numberOfDays, setNumberOfDays] = useState(0)
+
+	const calculateNumberOfDays = () => {
+		const start = new Date(startDate)
+		const end = new Date(endDate)
+		const differenceInTime = end.getTime() - start.getTime()
+		const differenceInDays = differenceInTime / (1000 * 3600 * 24)
+		return differenceInDays
+	}
+
+	useEffect(() => {
+		if (startDate && endDate && numberOfGuests) {
+			const days = calculateNumberOfDays()
+			setNumberOfDays(days)
+		}
+	}, [startDate, endDate, numberOfGuests])
+
+	const tax = 4.65
+	const [totalPrice, setTotalPrice] = useState<number>(0)
+
 	return (
 		<BookingContext.Provider
 			value={{
@@ -107,6 +136,9 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 				handleCheckboxChange,
 				selectedOptions,
 				setSelectedOptions,
+				numberOfDays,
+				totalPrice,
+				tax,
 			}}
 		>
 			{children}

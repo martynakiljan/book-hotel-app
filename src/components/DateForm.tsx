@@ -19,19 +19,18 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
 		handleNumberOfGuest,
 		isSubmitDisabled,
 		error,
+		numberOfGuests,
 	} = useBooking()
-
-	console.log(showButton)
 
 	return (
 		<>
-			<div className={`p-8 rounded-lg ${changeStyling ? 'bg-transparent p-0 pt-4' : 'bg-gray-100 shadow-lg'}`}>
+			<div className={` rounded-lg ${changeStyling ? 'bg-transparent p-0 pt-4' : 'bg-gray-100 shadow-lg p-8'}`}>
 				{' '}
 				{showButton && <h2 className='text-teal-600 text-2xl font-semibold mb-4'>Book Your Stay</h2>}
 				<form onSubmit={handleSubmit}>
-					<div className='flex flex-col md:flex-row mb-4 h-full'>
-						<div className='flex items-center mr-4 h-full'>
-							<label htmlFor='startDate' className='block text-sm font-medium text-gray-700 mr-2'>
+					<div className='flex flex-col flex-wrap md:flex-row mb-4 h-full'>
+						<div className='flex items-center  h-full mr-4 p-1'>
+							<label htmlFor='startDate' className='block text-sm font-medium text-gray-700 mr-2 '>
 								Start Date
 							</label>
 							<input
@@ -44,7 +43,7 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
 							/>
 						</div>
 
-						<div className='flex items-center mr-4'>
+						<div className='flex items-center mr-4 mb-1 p-1'>
 							<label htmlFor='endDate' className='block text-sm font-medium text-gray-700 mr-2'>
 								End Date
 							</label>
@@ -58,7 +57,7 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
 							/>
 						</div>
 
-						<div className='flex items-center'>
+						<div className='flex items-center mb-1 p-1'>
 							<label htmlFor='guests' className='block text-sm font-medium text-gray-700 mr-2'>
 								Number of Guests
 							</label>
@@ -67,7 +66,9 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
 								inputMode='numeric'
 								id='guests'
 								name='guests'
+								min='1'
 								type='number'
+								defaultValue={numberOfGuests || 1}
 								className='p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 '
 								style={{ maxWidth: '50px', flexShrink: 0 }}
 								onChange={handleNumberOfGuest}
@@ -85,7 +86,7 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
 																? 'bg-gray-400 text-gray-700 cursor-not-allowed'
 																: 'bg-teal-600 text-white hover:bg-teal-700'
 														}
-                            ${showButton ? 'hidden' : ''}`}
+                            `}
 						>
 							Submit
 						</button>
