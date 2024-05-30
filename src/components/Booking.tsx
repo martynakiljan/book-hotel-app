@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faBasketShopping } from '@fortawesome/free-solid-svg-icons'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { HotelData } from '../type'
 import Form from './Form'
 import DateForm from './DateForm'
 import { useBooking } from '../context/BookingContext'
 
 const Booking = () => {
-	const { numberOfDays, numberOfGuests } = useBooking()
+	const navigate = useNavigate()
+	const { numberOfDays, numberOfGuests, isSubmitDisabled, startDate, endDate } = useBooking()
 	const [showMessage, setShowMessage] = useState<boolean>(false)
 
 	const location = useLocation()
@@ -39,6 +40,21 @@ const Booking = () => {
 		}
 	}, [showMessage])
 
+	const handleBooking = () => {
+		navigate('/booking-confirmation', {
+			state: {
+				hotel,
+				startDate,
+				endDate,
+				numberOfGuests,
+				totalPrice,
+			},
+		})
+	}
+
+	console.log(!isSubmitDisabled, startDate, endDate)
+	const canBook = !isSubmitDisabled && startDate && endDate
+
 	return (
 		<div className='py-8 mt-8 container mx-auto mt-auto mb-auto p-4 flex flex-col md:flex-row'>
 			<div className='w-full md:w-3/5 pr-4 md:pr-8 mb-8 md:mb-0'>
@@ -52,7 +68,7 @@ const Booking = () => {
 				<h2 className='text-xl font-semibold mb-4' style={{ color: 'rgb(12, 148, 136)' }}>
 					Guest Details
 				</h2>
-				<Form onSubmit={onSubmit} showMessage={showMessage} showPhoneInput={true} showButton={false} />
+				<Form onSubmit={onSubmit} showMessage={showMessage} showPhoneInput={true} showButton={true} />
 				<div className='mb-4 mt-4'>
 					<label htmlFor='newsletter' className='inline-flex items-center'>
 						<input type='checkbox' id='newsletter' className='mr-2 checked:bg-green-900' />
@@ -65,17 +81,16 @@ const Booking = () => {
 				<div className='mb-4'>
 					<textarea id='special-requests' className='border border-gray-400 rounded px-4 py-2 w-full'></textarea>
 				</div>
-				<button
-					style={{
-						backgroundColor: 'rgb(12, 148, 136)',
-						padding: '8px 16px',
-						borderRadius: '8px',
-					}}
-					className='bg-green-500 text-white px-4 py-2 rounded'
-				>
-					<NavLink to='/booking-confirmation' className=''>
-						Book now!
-					</NavLink>
+				<button>
+					{canBook ? (
+						<NavLink
+							to='/booking-confirmation'
+							onClick={handleBooking}
+							className='text-white bg-teal-600  hover:bg-green-600 px-4 py-2 rounded'
+						>
+							Book now!
+						</NavLink>
+					) : null}
 				</button>
 			</div>
 			<div className='w-full md:w-2/5'>

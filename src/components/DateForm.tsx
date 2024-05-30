@@ -28,7 +28,7 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
 				{' '}
 				{showButton && <h2 className='text-teal-600 text-2xl font-semibold mb-4'>Book Your Stay</h2>}
 				<form onSubmit={handleSubmit}>
-					<div className='flex flex-col flex-wrap md:flex-row mb-4 h-full'>
+					<div className='flex flex-col  md:flex-row mb-4 h-full'>
 						<div className='flex items-center  h-full mr-4 p-1'>
 							<label htmlFor='startDate' className='block text-sm font-medium text-gray-700 mr-2 '>
 								Start Date
@@ -82,10 +82,10 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
 							disabled={isSubmitDisabled}
 							className={`px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2
                             ${
-															isSubmitDisabled
-																? 'bg-gray-400 text-gray-700 cursor-not-allowed'
-																: 'bg-teal-600 text-white hover:bg-teal-700'
-														}
+								isSubmitDisabled
+								? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+								: 'bg-teal-600 text-white hover:bg-teal-700'
+								}
                             `}
 						>
 							Submit
