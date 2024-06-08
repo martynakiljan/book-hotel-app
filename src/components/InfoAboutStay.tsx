@@ -14,12 +14,12 @@ const InfoAboutStay = () => {
 
 	return (
 		<div className='bg-gray-100 p-4 rounded-lg shadow-md mb-5'>
-			<p className='text-gray-800 mt-10'>
+			<p className='text-gray-800 mt-10 mb-5'>
 				You selected date: <strong>{startDate}</strong> to <strong>{endDate}</strong>
 			</p>
 			<Link
 				to='/'
-				className='display-block items-center text-white py-2 px-4 rounded-lg bg-teal-500 hover:bg-teal-600  mt-5'
+				className='display-block items-center text-white py-2 px-4 rounded-lg bg-teal-600 hover:bg-teal-500   mt-5'
 			>
 				<FontAwesomeIcon icon={faArrowLeft} className='text-lg mr-2 ' />
 				Edit your date

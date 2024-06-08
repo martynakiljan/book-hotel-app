@@ -42,7 +42,7 @@ const HotelDetails = () => {
 	if (!hotel) return <HotelNotFound />
 
 	return (
-		<div className='py-16 mt-16 container mx-auto mt-auto mb-auto h-full p-4'>
+		<div className='py-16 container mx-auto mt-auto mb-auto h-full p-4'>
 			<div className='flex items-center mb-4'>
 				<BackToAllHotels />
 			</div>
@@ -137,14 +137,14 @@ const HotelDetails = () => {
 							<p className='text-gray-600'>City-Tax (4.65.- per person / Night)</p>
 						</div>
 						<NavLink to='/booking' state={{ hotel }}>
-							<button className='bg-teal-600 text-white px-4 py-2 rounded-lg mt-4 hover:bg-teal-700 focus:ring-teal-600 focus:ring-opacity-50'>
+							<button className=' text-white px-4 py-2 rounded-lg mt-4  bg-teal-600 hover:bg-teal-500 focus:ring-opacity-50'>
 								Book Now
 							</button>
 						</NavLink>
 					</div>
 				</div>
 			</div>
-			{/* <MainForm isButtonSubmitHidden={isButtonSubmitHidden} /> */}
+
 			<Reviews />
 		</div>
 	)

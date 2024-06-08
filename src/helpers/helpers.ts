@@ -1,20 +1,22 @@
+import { error } from 'console'
 import { HotelData, sortOptions } from '../type'
 
 export const sortHotels = (hotels: HotelData[], sortBy: string, searchQuery: string, selectedOptions: sortOptions) => {
 	const filteredHotels = hotels.filter(hotel => {
+		const isAnyOptionSelected = Object.values(selectedOptions).some(value => value)
+
 		const optionsMatch =
-			(selectedOptions.pool || hotel.pool) &&
-			(selectedOptions.airConditioning || hotel.airConditioning) &&
-			(selectedOptions.breakfastIncluded || hotel.breakfastIncluded) &&
-			(selectedOptions.balcony || hotel.balcony) &&
-			(selectedOptions.petFriendly || hotel.petFriendly)
+			!isAnyOptionSelected ||
+			(selectedOptions.pool && hotel.pool) ||
+			(selectedOptions.airConditioning && hotel.airConditioning) ||
+			(selectedOptions.breakfastIncluded && hotel.breakfastIncluded) ||
+			(selectedOptions.balcony && hotel.balcony) ||
+			(selectedOptions.petFriendly && hotel.petFriendly)
 
 		const nameMatch = hotel.name.toLowerCase().includes(searchQuery.toLowerCase())
 		const cityMatch = hotel.city.toLowerCase().includes(searchQuery.toLowerCase())
 		const locationMatch = hotel.location.toLowerCase().includes(searchQuery.toLowerCase())
 		const countryMatch = hotel.country.toLowerCase().includes(searchQuery.toLowerCase())
-
-		console.log(optionsMatch)
 
 		return optionsMatch && (nameMatch || cityMatch || locationMatch || countryMatch)
 	})

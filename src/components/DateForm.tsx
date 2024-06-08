@@ -3,13 +3,15 @@
 import '../styles/all.scss'
 import { useBooking } from '../context/BookingContext'
 import SelectForm from './SelectForm'
+import { useState } from 'react'
 
 interface DateFormProps {
 	showButton?: boolean
 	changeStyling?: boolean
+	showSelectForm?: boolean
 }
 
-const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
+const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling, showSelectForm }) => {
 	const {
 		handleSubmit,
 		startDate,
@@ -42,7 +44,6 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
 								className='p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-teal-500 focus:border-teal-500'
 							/>
 						</div>
-
 						<div className='flex items-center mr-4 mb-1 p-1'>
 							<label htmlFor='endDate' className='block text-sm font-medium text-gray-700 mr-2'>
 								End Date
@@ -79,10 +80,10 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
 						<button
 							type='submit'
 							disabled={isSubmitDisabled}
-							className={`px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2
+							className={`px-4 py-2 rounded-md text-white  focus:outline-none color-gray-400 bg-teal-600 hover:bg-teal-500 focus:ring-offset-2
                             ${
 															isSubmitDisabled
-																? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+																? 'bg-gray-400 text-gcursor-not-allowed'
 																: 'bg-teal-600 text-white hover:bg-teal-700'
 														}
                             `}
@@ -90,7 +91,7 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
 							Submit
 						</button>
 					)}
-					<SelectForm />
+					{!showSelectForm && <SelectForm />}
 				</form>
 			</div>
 		</>

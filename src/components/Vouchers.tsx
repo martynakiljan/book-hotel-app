@@ -1,30 +1,27 @@
 /** @format */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import voucherImg from '../assets/mix-images/voucher.png'
 import Info from './Info'
 
 const Vouchers = () => {
 	const navigate = useNavigate()
-	const [selectedValue, setSelectedValue] = useState('')
-	const [quantity, setQuantity] = useState('')
+	const [selectedValue, setSelectedValue] = useState(0)
+	const [quantity, setQuantity] = useState(0)
 	const [totalPrice, setTotalPrice] = useState(0)
 
-    const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const value = e.target.value;
-        setQuantity(value);
-        calculateTotalPrice(selectedValue, value);
-    }
+	const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		const value = Number(e.target.value)
+		setQuantity(value)
+	}
 
-	const handleVoucherSelect = (value: string) => {
+	const handleVoucherSelect = (value: number) => {
 		setSelectedValue(value)
-		calculateTotalPrice(value, quantity)
 	}
 
-	const calculateTotalPrice = (voucherValue: string, qty: string) => {
-		const price = parseInt(voucherValue) * parseInt(qty || '0')
-		setTotalPrice(price)
-	}
+	useEffect(() => {
+		setTotalPrice(selectedValue * quantity)
+	}, [selectedValue, quantity])
 
 	const handleOrder = () => {
 		if (totalPrice) {
@@ -55,9 +52,9 @@ const Vouchers = () => {
 							{['100', '200', '300', '500'].map(amount => (
 								<button
 									key={amount}
-									onClick={() => handleVoucherSelect(amount)}
+									onClick={() => handleVoucherSelect(Number(amount))}
 									className={`text-white px-4 py-2 rounded-md mr-2 mb-2 ${
-										selectedValue === amount ? 'bg-teal-600' : 'bg-teal-500'
+										selectedValue === Number(amount) ? 'bg-teal-700' : 'bg-teal-600'
 									}`}
 								>
 									{amount} CHF
@@ -82,7 +79,7 @@ const Vouchers = () => {
 							onClick={handleOrder}
 							disabled={!totalPrice}
 							className={`px-4 py-2 rounded-lg w-1/2 text-white ${
-								!totalPrice ? 'bg-gray-400 cursor-not-allowed' : 'bg-teal-500 hover:bg-teal-600'
+								!totalPrice ? 'bg-gray-400 cursor-not-allowed' : 'bg-teal-500  0 hover:bg-teal-600'
 							}`}
 						>
 							Buy

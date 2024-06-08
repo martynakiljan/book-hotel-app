@@ -3,21 +3,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faBasketShopping } from '@fortawesome/free-solid-svg-icons'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { HotelData } from '../type'
-import Form from './Form'
 import DateForm from './DateForm'
 import { useBooking } from '../context/BookingContext'
+import FormBooking from './FormBooking'
 
 const Booking = () => {
 	const navigate = useNavigate()
-	const { numberOfDays, numberOfGuests, isSubmitDisabled, startDate, endDate } = useBooking()
+	const { numberOfDays, numberOfGuests, startDate, endDate } = useBooking()
 	const [showMessage, setShowMessage] = useState<boolean>(false)
-
+	const [isFormBookingValid, setIsFormBookingValid] = useState<boolean>(false)
 	const location = useLocation()
 	const hotel: HotelData | undefined = location.state?.hotel
 
 	const onSubmit = () => {
 		setShowMessage(true)
 	}
+
+	const [formData, setFormData] = useState({
+		firstName: '',
+		lastName: '',
+		email: '',
+		phone: '',
+		message: '',
+	})
 
 	// total price //
 	const tax = 4.65
@@ -40,29 +48,29 @@ const Booking = () => {
 		}
 	}, [showMessage])
 
-	const handleBooking = () => {
-		navigate('/booking-confirmation', {
-			state: {
-				hotel,
-				startDate,
-				endDate,
-				numberOfGuests,
-				totalPrice,
-			},
-		})
+	const validateFormBooking = (valid: boolean) => {
+		setIsFormBookingValid(valid)
 	}
 
-	console.log(!isSubmitDisabled, startDate, endDate)
-	const canBook = !isSubmitDisabled && startDate && endDate
+	const canBook = startDate && endDate && isFormBookingValid
+
+	const [showSelectForm] = useState<boolean>(true)
 
 	return (
 		<div className='py-8 container mx-auto mt-auto mb-auto p-4 flex flex-col md:flex-row'>
 			<div className='w-full md:w-3/5 pr-4 md:pr-8 mb-8 md:mb-0'>
 				<h1 className='text-3xl font-bold mb-8 text-teal-600'>Finalize your booking!</h1>
 				<h2 className='text-xl font-semibold mb-4 text-teal-600'>Reservation Details</h2>
-				<DateForm showButton={false} changeStyling={true} />
+				<DateForm showButton={false} changeStyling={true} showSelectForm={true} />
 				<h2 className='text-xl font-semibold mb-4 text-teal-600'>Guest Details</h2>
-				<Form onSubmit={onSubmit} showMessage={showMessage} showPhoneInput={true} showButton={true} />
+				<FormBooking
+					validateFormBooking={validateFormBooking}
+					onSubmit={onSubmit}
+					showMessage={showMessage}
+					showPhoneInput={true}
+					showButton={true}
+					setFormData={setFormData}
+				/>
 				<div className='mb-4 mt-4'>
 					<label htmlFor='newsletter' className='inline-flex items-center'>
 						<input type='checkbox' id='newsletter' className='mr-2 checked:bg-green-900' />
@@ -77,12 +85,23 @@ const Booking = () => {
 					{canBook ? (
 						<NavLink
 							to='/booking-confirmation'
-							onClick={handleBooking}
-							className='text-white bg-teal-700  hover:bg-green-600 px-4 py-2 rounded'
+							className='text-white bg-teal-600  hover:bg-teal-500 px-4 py-2 rounded'
+							state={{
+								hotel,
+								startDate,
+								endDate,
+								numberOfGuests,
+								totalPrice,
+								formData,
+							}}
 						>
 							Book now!
 						</NavLink>
-					) : null}
+					) : (
+						<p className='text-sm italic text-gray-400'>
+							*fill out all the fields and then you can proceed to finalize the booking.
+						</p>
+					)}
 				</button>
 			</div>
 			<div className='w-full md:w-2/5'>

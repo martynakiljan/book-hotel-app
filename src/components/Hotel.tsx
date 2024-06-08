@@ -22,7 +22,9 @@ const Hotel: React.FC<{ hotel: HotelProps }> = ({ hotel }) => {
 					<strong>Price per night:</strong> CHF {hotel.pricePerNight}
 				</p>
 				<Link to={`/hotel/${hotel.id}`} state={{ hotel }}>
-					<button className='bg-teal-600 text-white px-4 py-2 mt-4 rounded mb-4'>I want to see this hotel</button>
+					<button className=' bg-teal-600 hover:bg-teal-500 text-white px-4 py-2 mt-4 rounded mb-4'>
+						I want to see this hotel
+					</button>
 				</Link>
 			</div>
 		</div>

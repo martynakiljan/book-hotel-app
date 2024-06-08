@@ -3,6 +3,15 @@ import { useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faBasketShopping } from '@fortawesome/free-solid-svg-icons'
 import Form from './Form'
+import { useForm } from 'react-hook-form'
+
+type FormInputs = {
+	firstName: string
+	lastName: string
+	email: string
+	phone: string
+	message: string
+}
 
 const Finalization = () => {
 	const location = useLocation()
@@ -10,6 +19,8 @@ const Finalization = () => {
 	const [showMessage, setShowMessage] = useState<boolean>(false)
 
 	const onSubmit = () => {
+		console.log('klik')
+
 		setShowMessage(true)
 	}
 
@@ -27,15 +38,13 @@ const Finalization = () => {
 			<div className='w-full md:w-3/5 pr-4 md:pr-8 mb-8 md:mb-0'>
 				<h1 className='text-3xl font-bold mb-8 text-teal-600'>Finalize payment!</h1>
 
-				<Form onSubmit={onSubmit} showMessage={showMessage} showPhoneInput={true} showButton={false} />
+				<Form onSubmit={onSubmit} showMessage={showMessage} showPhoneInput={false} showButton={true} />
 				<div className='mb-4 mt-4'>
 					<label htmlFor='newsletter' className='inline-flex items-center'>
 						<input type='checkbox' id='newsletter' className='mr-2 checked:bg-green-900' />
 						Subscribe to newsletter
 					</label>
 				</div>
-
-				<button className='bg-teal-500 text-white px-4 py-2 rounded-lg'>Submit</button>
 			</div>
 			<div className='w-full md:w-2/5'>
 				<div className='mr-4 md:mr-8'>

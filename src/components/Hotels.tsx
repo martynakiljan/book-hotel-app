@@ -5,8 +5,8 @@ import { HotelData, HotelProps } from '../type'
 import InfoAboutStay from './InfoAboutStay'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { sortHotels } from '../helpers/helpers'
 import { useBooking } from '../context/BookingContext'
+import { sortHotels } from '../helpers/helpers'
 
 const Hotels = () => {
 	const { sortBy, handleSortChange, selectedOptions } = useBooking()

@@ -1,7 +1,7 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
+import React, { useEffect } from 'react'
+import { useForm, useWatch } from 'react-hook-form'
 
-type FormInputs = {
+export type FormInputs = {
 	firstName: string
 	lastName: string
 	email: string
@@ -14,14 +14,33 @@ interface FormProps {
 	showMessage: boolean
 	showPhoneInput: boolean
 	showButton: boolean
+	validateFormBooking: (valid: boolean) => void
+	setFormData: React.Dispatch<React.SetStateAction<FormInputs>>
 }
 
-const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, showButton }) => {
+const FormBooking: React.FC<FormProps> = ({
+	onSubmit,
+	showMessage,
+	showPhoneInput,
+	setFormData,
+	validateFormBooking,
+}) => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<FormInputs>()
+		control,
+	} = useForm<FormInputs>({
+		mode: 'onChange',
+	})
+
+	const watchAllFields = useWatch({ control }) as FormInputs
+
+	useEffect(() => {
+		const isValid = !Object.values(errors).length && Object.values(watchAllFields).every(value => value)
+		validateFormBooking(isValid)
+		setFormData(watchAllFields)
+	}, [errors, watchAllFields, validateFormBooking, setFormData])
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
@@ -33,7 +52,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, show
 					{...register('firstName', { required: true, minLength: 3 })}
 					type='text'
 					id='firstName'
-					className='border border-gray-300 rounded-md px-3 py-2 w-full  mb-1'
+					className='border border-gray-300 rounded-md px-3 py-2 w-full mb-1'
 				/>
 				{errors.firstName && (
 					<p className='text-red-500 text-xs'>First name is required and must be at least 3 characters long.</p>
@@ -47,7 +66,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, show
 					{...register('lastName', { required: true, minLength: 3 })}
 					type='text'
 					id='lastName'
-					className='border border-gray-300 rounded-md px-3 py-2 w-full  mb-1'
+					className='border border-gray-300 rounded-md px-3 py-2 w-full mb-1'
 				/>
 				{errors.lastName && (
 					<p className='text-red-500 text-xs'>Last name is required and must be at least 3 characters long.</p>
@@ -64,7 +83,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, show
 					})}
 					type='email'
 					id='email'
-					className='border border-gray-300 rounded-md px-3 py-2 w-full  mb-1'
+					className='border border-gray-300 rounded-md px-3 py-2 w-full mb-1'
 				/>
 				{errors.email && <p className='text-red-500 text-xs'>Please enter a valid email address.</p>}
 			</div>
@@ -77,7 +96,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, show
 						{...register('phone', {
 							required: true,
 							pattern: {
-								value: /^\+?\d{1,4}[-\s]?\d{6,10}$/,
+								value: /^\+?\d{9,15}$/,
 								message: 'Please enter a valid phone number with optional country code',
 							},
 						})}
@@ -85,7 +104,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, show
 						id='phone'
 						className='border border-gray-300 rounded-md px-3 py-2 w-full mb-1'
 					/>
-					{errors.phone && <p className='text-red-500 text-xs'>Please enter a valid phone number.</p>}
+					{errors.phone && <p className='text-red-500 text-xs'>{errors.phone.message}</p>}
 				</div>
 			)}
 			<div className='mb-4'>
@@ -95,21 +114,13 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, show
 				<textarea
 					{...register('message', { required: true, minLength: 10 })}
 					id='message'
-					className='border border-gray-300 rounded-md px-3 py-2 w-full  mb-1'
+					className='border border-gray-300 rounded-md px-3 py-2 w-full mb-1'
 				></textarea>
 				{errors.message && <p className='text-red-500 text-xs'>Message must be at least 10 characters long.</p>}
 			</div>
-			{showButton && (
-				<button
-					type='submit'
-					className=' text-white px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 mx-auto flex-shrink-0 ml-0 mr-auto '
-				>
-					Send
-				</button>
-			)}
-			{showMessage ? <p className='text-teal-600 py-2'>Thank you!</p> : null}
+			{showMessage && <p className='text-teal-600 py-2'>Thank you!</p>}
 		</form>
 	)
 }
 
-export default Form
+export default FormBooking
