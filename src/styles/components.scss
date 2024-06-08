@@ -65,7 +65,6 @@ body {
 	padding: 5px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	font-weight: 300;
 }
 
 .custom-checbox {
@@ -101,7 +100,7 @@ img {
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	border: 2px solid white;
+	border: 2px solid #1f2937;
 	outline: none;
 	transition: background-color 0.3s, border-color 0.3s;
 	position: relative;
@@ -148,4 +147,3 @@ input::-webkit-datetime-edit-year-field:focus {
 		width: 50px;
 	}
 }
-

@@ -11,16 +11,12 @@ const BookingConfirmation = () => {
 		numberOfGuests: number
 		totalPrice: number
 	}
-	
+
 	console.log(hotel)
 	return (
 		<div className='py-16 mt-16 container mx-auto mt-auto mb-auto h-full p-4'>
-			<h1 className='text-3xl font-bold mb-8' style={{ color: 'rgb(12, 148, 136)' }}>
-				Booking Confirmation
-			</h1>
-			<h2 className='text-xl font-semibold mb-4' style={{ color: 'rgb(12, 148, 136)' }}>
-				Thank you for your booking!
-			</h2>
+			<h1 className='text-3xl font-bold mb-8 text-teal-600'>Booking Confirmation</h1>
+			<h2 className='text-xl font-semibold mb-4 text-teal-600'>Thank you for your booking!</h2>
 			<div className='bg-white border border-gray-300 rounded-lg shadow-md p-4 mb-4'>
 				<h2 className='text-lg font-semibold mb-2'>Booking Details</h2>
 				<div className='flex flex-col md:flex-row'>

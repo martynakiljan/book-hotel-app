@@ -58,24 +58,18 @@ const HotelDetails = () => {
 
 					<div className='flex items-start justify-between mb-4 w-1/2'>
 						<div>
-							<p style={{ color: 'rgb(12, 148, 136)' }} className='font-bold'>
-								Check-In
-							</p>
+							<p className='font-bold color-teal-600'>Check-In</p>
 							<p>from 16:00 to 21:00</p>
 						</div>
 						<div>
-							<p style={{ color: 'rgb(12, 148, 136)' }} className='font-bold'>
-								Check-Out
-							</p>
+							<p className='font-bold color-teal-600'>Check-Out</p>
 							<p>until 12:00</p>
 						</div>
 					</div>
 
 					<div className='flex items-start justify-between mb-4 w-1/2'>
 						<div>
-							<p style={{ color: 'rgb(12, 148, 136)' }} className='font-bold'>
-								Address
-							</p>
+							<p className='font-bold color-teal-600'>Address</p>
 							<p>
 								{hotel.city}, {hotel.country}
 							</p>
@@ -87,16 +81,14 @@ const HotelDetails = () => {
 						<ul className='list-disc flex flex-wrap'>
 							{Object.entries(icons).map(([key, icon]) =>
 								key === 'maxCapacity' && hotel[key as keyof HotelData] ? (
-									<li key={key} className='flex items-center px-0' style={{ paddingRight: '15px' }}>
+									<li key={key} className='flex items-center px-0 pr-15'>
 										<FontAwesomeIcon icon={icon} className='text-2xl text-teal-500 mr-2' />
-										<span style={{ display: 'inline-block' }}>
-											max number of people: {hotel[key as keyof HotelData]}
-										</span>
+										<span className='inline-block'>max number of people: {hotel[key as keyof HotelData]}</span>
 									</li>
 								) : hotel[key as keyof HotelData] && key !== 'maxCapacity' ? (
-									<li key={key} className='flex items-center mb-2 px-0 py-2' style={{ paddingRight: '15px' }}>
+									<li key={key} className='flex items-center mb-2 px-0 py-2 pr-3'>
 										<FontAwesomeIcon icon={icon} className='text-2xl text-teal-500 mr-2' />
-										<span style={{ display: 'inline-block' }}>
+										<span className='inline-block'>
 											{key === 'petFriendly'
 												? 'pet Friendly'
 												: key === 'airConditioning'
@@ -126,9 +118,7 @@ const HotelDetails = () => {
 									typeof value === 'boolean' &&
 									value && (
 										<li key={key} className='flex items-center mb-2 px-0 '>
-											<span style={{ color: 'rgb(12, 148, 136)' }} className='mr-2'>
-												+
-											</span>
+											<span className='mr-2 text-teal-700'>+</span>
 											{key === 'petFriendly'
 												? 'pet Friendly'
 												: key === 'airConditioning'
@@ -147,14 +137,7 @@ const HotelDetails = () => {
 							<p className='text-gray-600'>City-Tax (4.65.- per person / Night)</p>
 						</div>
 						<NavLink to='/booking' state={{ hotel }}>
-							<button
-								style={{
-									backgroundColor: 'rgb(12, 148, 136)',
-									padding: '8px 16px',
-									borderRadius: '8px',
-								}}
-								className='text-white px-4 py-2 mt-4 rounded bg-teal-500'
-							>
+							<button className='bg-teal-600 text-white px-4 py-2 rounded-lg mt-4 hover:bg-teal-700 focus:ring-teal-600 focus:ring-opacity-50'>
 								Book Now
 							</button>
 						</NavLink>

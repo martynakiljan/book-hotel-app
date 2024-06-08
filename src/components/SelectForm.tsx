@@ -8,7 +8,7 @@ const CheckboxContainer: React.FC = () => {
 	const { handleCheckboxChange, selectedOptions } = useBooking()
 
 	return (
-		<div className='mt-8 text-white'>
+		<div className='mt-8 '>
 			<form>
 				<div className='flex flex-wrap items-center justify-center mb-4'>
 					<label htmlFor='pool' className='checkbox-label'>

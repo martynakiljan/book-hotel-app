@@ -17,17 +17,15 @@ const Finalization = () => {
 		if (showMessage) {
 			const timer = setTimeout(() => {
 				setShowMessage(false)
-			}, 1000)
+			}, 2000)
 			return () => clearTimeout(timer)
 		}
 	}, [showMessage])
 
 	return (
-		<div className='py-8 mt-8 container mx-auto mt-auto mb-auto p-4 flex flex-col md:flex-row'>
+		<div className='py-8 container mx-auto mt-auto mb-auto p-4 flex flex-col md:flex-row'>
 			<div className='w-full md:w-3/5 pr-4 md:pr-8 mb-8 md:mb-0'>
-				<h1 className='text-3xl font-bold mb-8' style={{ color: 'rgb(12, 148, 136)' }}>
-					Finalize payment!
-				</h1>
+				<h1 className='text-3xl font-bold mb-8 text-teal-600'>Finalize payment!</h1>
 
 				<Form onSubmit={onSubmit} showMessage={showMessage} showPhoneInput={true} showButton={false} />
 				<div className='mb-4 mt-4'>
@@ -37,16 +35,7 @@ const Finalization = () => {
 					</label>
 				</div>
 
-				<button
-					style={{
-						backgroundColor: 'rgb(12, 148, 136)',
-						padding: '8px 16px',
-						borderRadius: '8px',
-					}}
-					className='bg-green-500 text-white px-4 py-2 rounded'
-				>
-					Submit
-				</button>
+				<button className='bg-teal-500 text-white px-4 py-2 rounded-lg'>Submit</button>
 			</div>
 			<div className='w-full md:w-2/5'>
 				<div className='mr-4 md:mr-8'>

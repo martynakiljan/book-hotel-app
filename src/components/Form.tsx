@@ -98,13 +98,8 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, show
 			</div>
 			{showButton && (
 				<button
-					style={{
-						backgroundColor: 'rgb(12, 148, 136)',
-						padding: '8px 16px',
-						borderRadius: '8px',
-					}}
 					type='submit'
-					className='bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600 mx-auto'
+					className='bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-500 mx-auto flex-shrink-0'
 				>
 					Send
 				</button>

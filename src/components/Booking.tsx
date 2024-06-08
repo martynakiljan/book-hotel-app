@@ -35,7 +35,7 @@ const Booking = () => {
 		if (showMessage) {
 			const timer = setTimeout(() => {
 				setShowMessage(false)
-			}, 1000)
+			}, 2000)
 			return () => clearTimeout(timer)
 		}
 	}, [showMessage])
@@ -56,18 +56,12 @@ const Booking = () => {
 	const canBook = !isSubmitDisabled && startDate && endDate
 
 	return (
-		<div className='py-8 mt-8 container mx-auto mt-auto mb-auto p-4 flex flex-col md:flex-row'>
+		<div className='py-8 container mx-auto mt-auto mb-auto p-4 flex flex-col md:flex-row'>
 			<div className='w-full md:w-3/5 pr-4 md:pr-8 mb-8 md:mb-0'>
-				<h1 className='text-3xl font-bold mb-8' style={{ color: 'rgb(12, 148, 136)' }}>
-					Finalize your booking!
-				</h1>
-				<h2 className='text-xl font-semibold mb-4' style={{ color: 'rgb(12, 148, 136)' }}>
-					Reservation Details
-				</h2>
+				<h1 className='text-3xl font-bold mb-8 text-teal-600'>Finalize your booking!</h1>
+				<h2 className='text-xl font-semibold mb-4 text-teal-600'>Reservation Details</h2>
 				<DateForm showButton={false} changeStyling={true} />
-				<h2 className='text-xl font-semibold mb-4' style={{ color: 'rgb(12, 148, 136)' }}>
-					Guest Details
-				</h2>
+				<h2 className='text-xl font-semibold mb-4 text-teal-600'>Guest Details</h2>
 				<Form onSubmit={onSubmit} showMessage={showMessage} showPhoneInput={true} showButton={true} />
 				<div className='mb-4 mt-4'>
 					<label htmlFor='newsletter' className='inline-flex items-center'>
@@ -75,9 +69,7 @@ const Booking = () => {
 						Subscribe to newsletter
 					</label>
 				</div>
-				<h2 className='text-xl font-semibold mb-4' style={{ color: 'rgb(12, 148, 136)' }}>
-					Special Requests
-				</h2>
+				<h2 className='text-xl font-semibold mb-4 text-teal-600'>Special Requests</h2>
 				<div className='mb-4'>
 					<textarea id='special-requests' className='border border-gray-400 rounded px-4 py-2 w-full'></textarea>
 				</div>
@@ -86,7 +78,7 @@ const Booking = () => {
 						<NavLink
 							to='/booking-confirmation'
 							onClick={handleBooking}
-							className='text-white bg-teal-600  hover:bg-green-600 px-4 py-2 rounded'
+							className='text-white bg-teal-700  hover:bg-green-600 px-4 py-2 rounded'
 						>
 							Book now!
 						</NavLink>

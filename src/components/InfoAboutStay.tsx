@@ -19,16 +19,9 @@ const InfoAboutStay = () => {
 			</p>
 			<Link
 				to='/'
-				style={{
-					backgroundColor: 'rgb(12, 148, 136)',
-					padding: '8px 16px',
-					borderRadius: '8px',
-					display: 'inline-block',
-					marginTop: '20px',
-				}}
-				className='flex items-center text-white py-2 px-4 rounded-lg'
+				className='display-block items-center text-white py-2 px-4 rounded-lg bg-teal-500 hover:bg-teal-600  mt-5'
 			>
-				<FontAwesomeIcon icon={faArrowLeft} className='text-lg mr-2' />
+				<FontAwesomeIcon icon={faArrowLeft} className='text-lg mr-2 ' />
 				Edit your date
 			</Link>
 		</div>

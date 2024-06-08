@@ -16,7 +16,7 @@ const Contact = () => {
 		if (showMessage) {
 			const timer = setTimeout(() => {
 				setShowMessage(false)
-			}, 1000)
+			}, 2000)
 			return () => clearTimeout(timer)
 		}
 	}, [showMessage])

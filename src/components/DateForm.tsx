@@ -69,8 +69,7 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
 								min='1'
 								type='number'
 								defaultValue={numberOfGuests || 1}
-								className='p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 '
-								style={{ maxWidth: '50px', flexShrink: 0 }}
+								className='p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 max-w-[50px] '
 								onChange={handleNumberOfGuest}
 							/>
 						</div>
@@ -82,18 +81,18 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling }) => {
 							disabled={isSubmitDisabled}
 							className={`px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2
                             ${
-								isSubmitDisabled
-								? 'bg-gray-400 text-gray-700 cursor-not-allowed'
-								: 'bg-teal-600 text-white hover:bg-teal-700'
-								}
+															isSubmitDisabled
+																? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+																: 'bg-teal-600 text-white hover:bg-teal-700'
+														}
                             `}
 						>
 							Submit
 						</button>
 					)}
+					<SelectForm />
 				</form>
 			</div>
-			<SelectForm />
 		</>
 	)
 }

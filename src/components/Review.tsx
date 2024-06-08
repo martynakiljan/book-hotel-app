@@ -9,7 +9,7 @@ const Review: React.FC<ReviewProps> = ({ name, review, src, stars }) => {
 			<img src={src} alt={name} className='w-16 h-16 rounded-full mr-4' />
 			<div className='content'>
 				<div className='name font-bold '>{name}</div>
-				<div className='stars text-teal-600 '>({stars} / 5.0)</div>
+				<div className='stars text-teal-600 '>({stars} / 5)</div>
 				<div className='review-text'>{review}</div>
 			</div>
 		</div>

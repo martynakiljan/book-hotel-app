@@ -12,29 +12,23 @@ const Hotels = () => {
 	const { sortBy, handleSortChange, selectedOptions } = useBooking()
 
 	//pagination //
-	const [currentPage, setCurrentPage] = useState(1)
-	const hotelsPerPage = 4
 	const [searchQuery, setSearchQuery] = useState('')
-
-	const indexOfLastHotel = currentPage * hotelsPerPage
-	const indexOfFirstHotel = indexOfLastHotel - hotelsPerPage
-	const currentHotels = hotels.slice(indexOfFirstHotel, indexOfLastHotel)
-
-	const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
 	//search//
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchQuery(e.target.value)
-		setCurrentPage(1)
 	}
 
 	//filter//
-	const filteredHotels = sortHotels(currentHotels, sortBy, searchQuery, selectedOptions)
+	console.log(hotels)
+	const filteredHotels = sortHotels(hotels, sortBy, searchQuery, selectedOptions)
+
+	console.log(filteredHotels)
 
 	return (
 		<div className='px-4 py-16 container mx-auto mt-auto mb-auto h-full'>
 			<InfoAboutStay />
-			<div className='flex justify-between items-center'>
+			<div className='flex justify-between items-center mb-5'>
 				<h1 className='text-3xl font-bold'>Hotels</h1>
 				<div className='flex items-end'>
 					<div className='relative w-full max-w-xs'>
@@ -75,19 +69,6 @@ const Hotels = () => {
 			) : (
 				<p className='text-lg text-gray-600 mt-10'>Sorry! No hotels matching your criteria found :( </p>
 			)}
-			<div className='flex justify-center mt-4'>
-				{[...Array(Math.ceil(hotels.length / hotelsPerPage)).keys()].map(number => (
-					<button
-						key={number}
-						onClick={() => paginate(number + 1)}
-						className={`mx-1 px-3 py-1 rounded-lg ${
-							currentPage === number + 1 ? 'bg-teal-600 text-white' : 'bg-gray-200 text-gray-700'
-						}`}
-					>
-						{number + 1}
-					</button>
-				))}
-			</div>
 		</div>
 	)
 }
