@@ -48,12 +48,14 @@ const Booking = () => {
 		}
 	}, [showMessage])
 
+	//validate//
 	const validateFormBooking = (valid: boolean) => {
 		setIsFormBookingValid(valid)
 	}
 
 	const canBook = startDate && endDate && isFormBookingValid
 
+	//select //
 	const [showSelectForm] = useState<boolean>(true)
 
 	return (
@@ -62,7 +64,7 @@ const Booking = () => {
 				<h1 className='text-3xl font-bold mb-8 text-teal-600'>Finalize your booking!</h1>
 				<h2 className='text-xl font-semibold mb-4 text-teal-600'>Reservation Details</h2>
 				<DateForm showButton={false} changeStyling={true} showSelectForm={true} />
-				<h2 className='text-xl font-semibold mb-4 text-teal-600'>Guest Details</h2>
+				<h2 className='text-xl font-semibold mb-4 text-teal-600 mt-5'>Guest Details</h2>
 				<FormBooking
 					validateFormBooking={validateFormBooking}
 					onSubmit={onSubmit}

@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { createContext, useContext, useState, FormEvent, ChangeEvent, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { BookingContextType, sortOptions } from '../type'
 import { BookingProviderProps } from '../type'
 
@@ -24,6 +24,7 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 	const [startDate, setStartDate] = useState('')
 	const [endDate, setEndDate] = useState('')
 	const [numberOfGuests, setNumberOfGuests] = useState<number>(1)
+	const location = useLocation()
 
 	useEffect(() => {
 		if (isNaN(numberOfGuests)) {
@@ -64,7 +65,6 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 
 	const handleStartDateChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setStartDate(event.target.value)
-		console.log(event.target.value)
 	}
 
 	const handleEndDateChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -75,6 +75,8 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault()
+
+		console.log(startDate, endDate)
 		if (startDate > endDate) {
 			setError('Start date cannot be later than end date.')
 			return
@@ -91,7 +93,10 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
 		const filters = {
 			selectedOptions,
 		}
-		navigate('/hotels', { state: filters })
+
+		if (location.pathname !== '/booking') {
+			navigate('/hotels', { state: filters })
+		}
 	}
 
 	// calculate days for total price  //

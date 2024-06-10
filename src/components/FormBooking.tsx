@@ -9,7 +9,7 @@ export type FormInputs = {
 	message: string
 }
 
-interface FormProps {
+type FormProps = {
 	onSubmit: () => void
 	showMessage: boolean
 	showPhoneInput: boolean
@@ -30,6 +30,7 @@ const FormBooking: React.FC<FormProps> = ({
 		handleSubmit,
 		formState: { errors },
 		control,
+		reset,
 	} = useForm<FormInputs>({
 		mode: 'onChange',
 	})
@@ -41,6 +42,12 @@ const FormBooking: React.FC<FormProps> = ({
 		validateFormBooking(isValid)
 		setFormData(watchAllFields)
 	}, [errors, watchAllFields, validateFormBooking, setFormData])
+
+	useEffect(() => {
+		if (showMessage) {
+			reset()
+		}
+	}, [showMessage, reset])
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>

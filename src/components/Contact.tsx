@@ -21,6 +21,7 @@ const Contact = () => {
 		}
 	}, [showMessage])
 
+
 	return (
 		<div className='py-16 px-4 container mx-auto mt-auto mb-auto h-full'>
 			<h3 className='text-3xl font-bold dark:text-white my-8 '>Contact us</h3>
@@ -31,9 +32,9 @@ const Contact = () => {
 				<div>
 					<h2 className='text-xl font-bold mb-4'>Social Media</h2>
 					<div className='flex items-center space-x-4'>
-						<FontAwesomeIcon icon={faFacebook} className='text-blue-600 text-3xl' />
-						<FontAwesomeIcon icon={faTwitter} className='text-blue-400 text-3xl' />
-						<FontAwesomeIcon icon={faInstagram} className='text-pink-600 text-3xl' />
+						<FontAwesomeIcon icon={faFacebook} className='cursor-pointer text-blue-600 text-3xl' />
+						<FontAwesomeIcon icon={faTwitter} className=' cursor-pointer text-blue-400 text-3xl' />
+						<FontAwesomeIcon icon={faInstagram} className='cursor-pointer text-pink-600 text-3xl' />
 					</div>
 					<p className='mt-4 text-gray-700'>
 						Need help? Contact us! Use the form on the left or feel free to reach out via social media.

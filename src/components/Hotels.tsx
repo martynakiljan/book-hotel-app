@@ -20,18 +20,15 @@ const Hotels = () => {
 	}
 
 	//filter//
-	console.log(hotels)
 	const filteredHotels = sortHotels(hotels, sortBy, searchQuery, selectedOptions)
-
-	console.log(filteredHotels)
 
 	return (
 		<div className='px-4 py-16 container mx-auto mt-auto mb-auto h-full'>
 			<InfoAboutStay />
-			<div className='flex justify-between items-center mb-5'>
-				<h1 className='text-3xl font-bold'>Hotels</h1>
-				<div className='flex items-end'>
-					<div className='relative w-full max-w-xs'>
+			<div className='flex flex-col lg:flex-row justify-between items-start lg:items-center mb-5'>
+				<h1 className='text-3xl font-bold mb-4 lg:mb-0'>Hotels</h1>
+				<div className='flex flex-col lg:flex-row items-start lg:items-end w-full lg:w-auto'>
+					<div className='relative w-full max-w-xs mb-4 lg:mb-0 lg:mr-4'>
 						<label htmlFor='sort' className='block text-m font-medium text-teal-600'>
 							Sort by:
 						</label>
@@ -51,11 +48,11 @@ const Hotels = () => {
 							</div>
 						</div>
 					</div>
-					<div className='relative w-full max-w-xs ml-4'>
+					<div className='relative w-full max-w-xs'>
 						<input
 							type='text'
 							placeholder='Search...'
-							className='mt-1 block w-full pl-3 pr-10 py-2 text-base  placeholder-gray-900 border border-teal-600 focus:outline-none rounded-md appearance-none'
+							className='mt-1 block w-full pl-3 pr-10 py-2 text-base placeholder-gray-900 border border-teal-600 focus:outline-none rounded-md appearance-none'
 							onChange={handleSearchChange}
 						/>
 						<div className='absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-700'>

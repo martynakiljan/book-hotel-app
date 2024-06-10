@@ -76,21 +76,21 @@ const DateForm: React.FC<DateFormProps> = ({ showButton, changeStyling, showSele
 						</div>
 					</div>
 					{error && <p className='text-red-500 mb-4 text-xs'>{error}</p>}
-					{showButton && (
-						<button
-							type='submit'
-							disabled={isSubmitDisabled}
-							className={`px-4 py-2 rounded-md text-white  focus:outline-none color-gray-400 bg-teal-600 hover:bg-teal-500 focus:ring-offset-2
+
+					<button
+						type='submit'
+						disabled={isSubmitDisabled}
+						className={`px-4 py-2 rounded-md text-white  focus:outline-none color-gray-400 bg-teal-600 hover:bg-teal-500 focus:ring-offset-2
                             ${
 															isSubmitDisabled
-																? 'bg-gray-400 text-gcursor-not-allowed'
+																? 'bg-gray-400 cursor-not-allowed'
 																: 'bg-teal-600 text-white hover:bg-teal-700'
 														}
                             `}
-						>
-							Submit
-						</button>
-					)}
+					>
+						Confirm
+					</button>
+
 					{!showSelectForm && <SelectForm />}
 				</form>
 			</div>

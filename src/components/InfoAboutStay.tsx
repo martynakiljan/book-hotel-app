@@ -14,7 +14,7 @@ const InfoAboutStay = () => {
 
 	return (
 		<div className='bg-gray-100 p-4 rounded-lg shadow-md mb-5'>
-			<p className='text-gray-800 mt-10 mb-5'>
+			<p className='text-gray-800 mb-5'>
 				You selected date: <strong>{startDate}</strong> to <strong>{endDate}</strong>
 			</p>
 			<Link

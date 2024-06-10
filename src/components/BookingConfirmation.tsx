@@ -14,7 +14,6 @@ const BookingConfirmation = () => {
 		formData: FormInputs
 	}
 
-	console.log(formData)
 	return (
 		<div className='py-16 container mx-auto mt-auto mb-auto h-full p-4'>
 			<h1 className='text-3xl font-bold mb-8 text-teal-600'>Booking Confirmation</h1>

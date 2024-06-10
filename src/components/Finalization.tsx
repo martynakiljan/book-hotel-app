@@ -19,8 +19,6 @@ const Finalization = () => {
 	const [showMessage, setShowMessage] = useState<boolean>(false)
 
 	const onSubmit = () => {
-		console.log('klik')
-
 		setShowMessage(true)
 	}
 

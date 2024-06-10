@@ -6,20 +6,20 @@ import { faInstagram, faFacebook, faYoutube } from '@fortawesome/free-brands-svg
 import { NavLink } from 'react-router-dom'
 const Footer = () => {
 	return (
-		<div className='bg-teal-600 text-gray-100 py-16 px-4'>
-			<div className='flex flex-col md:flex-row gap-4 container mx-auto pt-6 pb-6'>
+		<div className='bg-teal-600 text-gray-100 py-2 px-4'>
+			<div className='flex flex-col md:flex-row gap-4 container mx-auto pt-3 pb-3'>
 				<div className='text-3xl flex-shrink-0 mr-20'>
 					<FontAwesomeIcon icon={faSuitcaseRolling} className='text-3xl mr-2' />
 					<span className='text-gray-100 font-normal leading-4 text-xl'>BookHotel App</span>
 					<div className='my-5'>
-						<a href='#' className='mr-4'>
+						<a href='#' className='mr-4 cursor-pointer'>
 							<FontAwesomeIcon icon={faInstagram} className='text-2xl text-teal-300' />
 						</a>
-						<a href='#' className='mr-4'>
+						<a href='#' className='mr-4 cursor-pointer'>
 							<FontAwesomeIcon icon={faFacebook} className='text-2xl text-teal-300' />
 						</a>
 						<a href='#'>
-							<FontAwesomeIcon icon={faYoutube} className='text-2xl text-teal-300' />
+							<FontAwesomeIcon icon={faYoutube} className='cursor-pointer text-2xl text-teal-300' />
 						</a>
 					</div>
 					<div className='footer container mx-auto my-5 text-sm'>

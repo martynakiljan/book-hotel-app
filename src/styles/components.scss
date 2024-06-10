@@ -147,3 +147,11 @@ input::-webkit-datetime-edit-year-field:focus {
 		width: 50px;
 	}
 }
+
+.hotel-container {
+	border-bottom: 2px solid #0c9488;
+
+	&:last-of-type {
+		border-bottom: none;
+	}
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 type FormInputs = {
@@ -20,8 +20,15 @@ const Form: React.FC<FormProps> = ({ onSubmit, showMessage, showPhoneInput, show
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors },
 	} = useForm<FormInputs>()
+
+	useEffect(() => {
+		if (showMessage) {
+			reset()
+		}
+	}, [showMessage, reset])
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
