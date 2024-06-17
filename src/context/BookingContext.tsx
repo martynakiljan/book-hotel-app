@@ -1,152 +1,178 @@
 /** @format */
 
-import React, { createContext, useContext, useState, FormEvent, ChangeEvent, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { BookingContextType, sortOptions } from '../type'
-import { BookingProviderProps } from '../type'
+import React, {
+  createContext,
+  useContext,
+  useState,
+  FormEvent,
+  ChangeEvent,
+  useEffect,
+} from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { BookingContextType, sortOptions } from "../type";
+import { BookingProviderProps } from "../type";
 
 // create context
-const BookingContext = createContext<BookingContextType | undefined>(undefined)
+const BookingContext = createContext<BookingContextType | undefined>(undefined);
 
 // hook for context
 export const useBooking = () => {
-	const context = useContext(BookingContext)
-	if (!context) {
-		throw new Error('useBooking must be used within a BookingProvider')
-	}
-	return context
-}
+  const context = useContext(BookingContext);
+  if (!context) {
+    throw new Error("useBooking must be used within a BookingProvider");
+  }
+  return context;
+};
 
 // provider
-export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) => {
-	const navigate = useNavigate()
-	const [error, setError] = useState('')
-	const [startDate, setStartDate] = useState('')
-	const [endDate, setEndDate] = useState('')
-	const [numberOfGuests, setNumberOfGuests] = useState<number>(1)
-	const location = useLocation()
+export const BookingProvider: React.FC<BookingProviderProps> = ({
+  children,
+}) => {
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [numberOfGuests, setNumberOfGuests] = useState<number>(1);
+  const [isValidFormDate, setIsValidFormDate] = useState<boolean>(false);
+  const location = useLocation();
 
-	useEffect(() => {
-		if (isNaN(numberOfGuests)) {
-			setNumberOfGuests(1)
-		}
-	}, [numberOfGuests])
+  const [selectedOptions, setSelectedOptions] = useState<sortOptions>({
+    pool: false,
+    airConditioning: false,
+    breakfastIncluded: false,
+    balcony: false,
+    freeCancellation: false,
+    childrenFriendly: false,
+    petFriendly: false,
+  });
 
-	const [selectedOptions, setSelectedOptions] = useState<sortOptions>({
-		pool: false,
-		airConditioning: false,
-		breakfastIncluded: false,
-		balcony: false,
-		freeCancellation: false,
-		childrenFriendly: false,
-		petFriendly: false,
-	})
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = event.target;
+    setSelectedOptions((prevState) => ({ ...prevState, [name]: checked }));
+  };
 
-	const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, checked } = event.target
-		setSelectedOptions(prevState => ({ ...prevState, [name]: checked }))
-		console.log(name)
-	}
+  // sort //
+  const [sortBy, setSortBy] = useState("");
+  const [selectedSortOption, setSelectedSortOption] = useState("");
 
-	//sort//
+  const handleSortChange = (
+    e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>
+  ) => {
+    setSelectedSortOption(e.target.value);
+    setSortBy(e.target.value);
+  };
 
-	const [sortBy, setSortBy] = useState('')
-	const [selectedSortOption, setSelectedSortOption] = useState('')
+  const handleNumberOfGuest = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value;
 
-	const handleSortChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
-		setSelectedSortOption(e.target.value)
-		setSortBy(e.target.value)
-	}
+    if (inputValue === "") {
+      setNumberOfGuests(NaN);
+      return;
+    }
 
-	const handleNumberOfGuest = (event: ChangeEvent<HTMLInputElement>) => {
-		const inputValue = parseInt(event.target.value)
-		setNumberOfGuests(inputValue)
-	}
+    const parsedValue = parseInt(inputValue, 10);
 
-	const handleStartDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setStartDate(event.target.value)
-	}
+    if (!isNaN(parsedValue) && parsedValue >= 1) {
+      setNumberOfGuests(parsedValue);
+    } else {
+      setNumberOfGuests(1);
+    }
+  };
 
-	const handleEndDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setEndDate(event.target.value)
-	}
+  const handleBlur = () => {
+    if (isNaN(numberOfGuests)) {
+      setNumberOfGuests(1);
+    }
+  };
 
-	const isSubmitDisabled = !startDate || !endDate || !numberOfGuests
+  //date form //
 
-	const handleSubmit = (event: FormEvent) => {
-		event.preventDefault()
+  const handleStartDateChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setStartDate(event.target.value);
+  };
 
-		console.log(startDate, endDate)
-		if (startDate > endDate) {
-			setError('Start date cannot be later than end date.')
-			return
-		}
+  const handleEndDateChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEndDate(event.target.value);
+  };
 
-		const today = new Date().toISOString().split('T')[0]
+useEffect(() => {
+  const today = new Date().toISOString().split("T")[0];
+  let currentError = "";
 
-		if (endDate < today) {
-			setError('Cannot select a past date.')
-			return
-		}
-		setError('')
+  if ((startDate || endDate) && (!startDate || !endDate)) {
+    currentError = "Both start date and end date must be selected.";
+  } else if (startDate && startDate < today) {
+    currentError = "The start date cannot be in the past.";
+  } else if (endDate && endDate < today) {
+    currentError = "The end date cannot be in the past.";
+  } else if (startDate > endDate) {
+    currentError = "The start date cannot be later than the end date.";
+  }
 
-		const filters = {
-			selectedOptions,
-		}
+  setError(currentError);
+  setIsValidFormDate(currentError === "" && startDate !== "" && endDate !== "");
+}, [startDate, endDate]);
 
-		if (location.pathname !== '/booking') {
-			navigate('/hotels', { state: filters })
-		}
-	}
 
-	// calculate days for total price  //
 
-	const [numberOfDays, setNumberOfDays] = useState(0)
+  const isSubmitDisabled = !startDate || !endDate || numberOfGuests < 1;
 
-	const calculateNumberOfDays = () => {
-		const start = new Date(startDate)
-		const end = new Date(endDate)
-		const differenceInTime = end.getTime() - start.getTime()
-		const differenceInDays = differenceInTime / (1000 * 3600 * 24)
-		return differenceInDays
-	}
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    if (error) {
+      return;
+    }
+    const filters = { selectedOptions };
+    if (location.pathname !== "/booking") {
+      navigate("/hotels", { state: filters });
+    }
+  };
 
-	useEffect(() => {
-		if (startDate && endDate && numberOfGuests) {
-			const days = calculateNumberOfDays()
-			setNumberOfDays(days)
-		}
-	}, [startDate, endDate, numberOfGuests])
+  // calculate days for total price  //
+  const [numberOfDays, setNumberOfDays] = useState(0);
 
-	const tax = 4.65
-	const [totalPrice, setTotalPrice] = useState<number>(0)
+  const calculateNumberOfDays = () => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const differenceInTime = end.getTime() - start.getTime();
+    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+    return differenceInDays;
+  };
 
-	return (
-		<BookingContext.Provider
-			value={{
-				startDate,
-				setStartDate,
-				endDate,
-				setEndDate,
-				numberOfGuests,
-				setNumberOfGuests,
-				error,
-				handleStartDateChange,
-				handleNumberOfGuest,
-				handleEndDateChange,
-				isSubmitDisabled,
-				handleSubmit,
-				sortBy,
-				handleSortChange,
-				handleCheckboxChange,
-				selectedOptions,
-				setSelectedOptions,
-				numberOfDays,
-				totalPrice,
-				tax,
-			}}
-		>
-			{children}
-		</BookingContext.Provider>
-	)
-}
+  useEffect(() => {
+    if (startDate && endDate && numberOfGuests >= 1) {
+      const days = calculateNumberOfDays();
+      setNumberOfDays(days);
+    }
+  }, [startDate, endDate, numberOfGuests]);
+
+  return (
+    <BookingContext.Provider
+      value={{
+        startDate,
+        setStartDate,
+        endDate,
+        setEndDate,
+        numberOfGuests,
+        setNumberOfGuests,
+        error,
+        handleStartDateChange,
+        handleNumberOfGuest,
+        handleEndDateChange,
+        isSubmitDisabled,
+        handleSubmit,
+        sortBy,
+        handleSortChange,
+        handleCheckboxChange,
+        selectedOptions,
+        setSelectedOptions,
+        numberOfDays,
+        isValidFormDate,
+      }}
+    >
+      {children}
+    </BookingContext.Provider>
+  );
+};
+
+export default BookingProvider;

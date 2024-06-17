@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faBasketShopping } from '@fortawesome/free-solid-svg-icons'
 import Form from './Form'
-import { useForm } from 'react-hook-form'
 
 type FormInputs = {
 	firstName: string

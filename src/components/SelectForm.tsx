@@ -5,7 +5,7 @@ import '../styles/all.scss'
 import { useBooking } from '../context/BookingContext'
 
 const CheckboxContainer: React.FC = () => {
-	const { handleCheckboxChange, selectedOptions } = useBooking()
+	const { handleCheckboxChange } = useBooking()
 
 	return (
 		<div className='mt-8 '>

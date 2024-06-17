@@ -1,6 +1,5 @@
 /** @format */
 
-import { useState } from 'react'
 import HotelNotFound from './HotelNotFound'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink, useLocation } from 'react-router-dom'
@@ -19,7 +18,6 @@ import { useParams } from 'react-router-dom'
 import { HotelData } from '../type'
 import BackToAllHotels from './BackToAllHotels'
 import Reviews from './Reviews'
-import MainForm from './DateForm'
 
 const icons: { [key: string]: any } = {
 	petFriendly: faDog,
@@ -36,8 +34,6 @@ const HotelDetails = () => {
 	const { id } = useParams<{ id: string }>()
 	const location = useLocation()
 	const hotel: HotelData | undefined = location.state?.hotel || hotels.find(hotel => hotel.id === id)
-
-	const [isButtonSubmitHidden] = useState<boolean>(true)
 
 	if (!hotel) return <HotelNotFound />
 

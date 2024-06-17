@@ -5,7 +5,7 @@ import withHighlight from '../components/HOC'
 
 const Hotel: React.FC<{ hotel: HotelProps }> = ({ hotel }) => {
 	return (
-		<div className='py-16 md:flex hotel-container '>
+		<div className='py-4 md:flex hotel-container '>
 			<div className='md:w-1/3'>
 				<img
 					src={hotel.src}

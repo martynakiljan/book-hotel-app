@@ -78,7 +78,7 @@ const Vouchers = () => {
 						<button
 							onClick={handleOrder}
 							disabled={!totalPrice}
-							className={`px-4 py-2 rounded-lg w-1/2 text-white ${
+							className={`px-4 py-2 rounded-lg w-1/4 text-white ${
 								!totalPrice ? 'bg-gray-400 cursor-not-allowed' : 'bg-teal-500  0 hover:bg-teal-600'
 							}`}
 						>

@@ -2,7 +2,6 @@
 
 import "../styles/all.scss";
 import { useBooking } from "../context/BookingContext";
-import SelectForm from "./SelectForm";
 
 interface DateFormProps {
   showButton?: boolean;
@@ -10,10 +9,9 @@ interface DateFormProps {
   showSelectForm?: boolean;
 }
 
-const DateForm: React.FC<DateFormProps> = ({
+const DateFormBooking: React.FC<DateFormProps> = ({
   showButton,
   changeStyling,
-  showSelectForm,
 }) => {
   const {
     handleSubmit,
@@ -22,7 +20,6 @@ const DateForm: React.FC<DateFormProps> = ({
     handleStartDateChange,
     handleEndDateChange,
     handleNumberOfGuest,
-    isSubmitDisabled,
     error,
     numberOfGuests,
   } = useBooking();
@@ -41,7 +38,7 @@ const DateForm: React.FC<DateFormProps> = ({
             Book Your Stay
           </h2>
         )}
-        <form onSubmit={handleSubmit}>
+        <form onChange={handleSubmit}>
           <div className="flex flex-col md:flex-row mb-4 h-full">
             <div className="flex items-center h-full mr-4 p-1">
               <label
@@ -97,25 +94,10 @@ const DateForm: React.FC<DateFormProps> = ({
             </div>
           </div>
           {error && <p className="text-red-500 mb-4 text-xs">{error}</p>}
-
-          {!showSelectForm && <SelectForm />}
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              disabled={isSubmitDisabled}
-              className={`px-2 py-2 rounded-lg w-1/4 text-white ${
-                isSubmitDisabled
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-teal-500  0 hover:bg-teal-600"
-              }`}
-            >
-              Confirm
-            </button>
-          </div>
         </form>
       </div>
     </>
   );
 };
 
-export default DateForm;
+export default DateFormBooking;
