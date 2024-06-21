@@ -38,7 +38,7 @@ const Booking = () => {
       typeof numberOfGuests === "number" &&
       !isNaN(numberOfGuests)
     ) {
-      const price = hotel.pricePerNight * numberOfDays;
+      const price = hotel.pricePerNight * numberOfDays * numberOfGuests;
       const taxAmount = numberOfGuests * tax * numberOfDays;
       setTotalPrice(price + taxAmount);
     }
@@ -53,12 +53,7 @@ const Booking = () => {
     }
   }, [showMessage]);
 
-  //validate//
-  const validateFormBooking = (valid: boolean) => {
-    setIsFormBookingValid(valid);
-  };
 
-  console.log(isFormBookingValid, isValidFormDate);
 
   const canBook = isValidFormDate && isFormBookingValid;
 
@@ -76,7 +71,8 @@ const Booking = () => {
           Guest Details
         </h2>
         <FormBooking
-          validateFormBooking={validateFormBooking}
+          
+          setIsFormBookingValid={setIsFormBookingValid}
           onSubmit={onSubmit}
           showMessage={showMessage}
           showPhoneInput={true}
@@ -102,31 +98,20 @@ const Booking = () => {
             className="border border-gray-400 rounded px-4 py-2 w-full"
           ></textarea>
         </div>
-        <button>
+        <button
+          disabled={!canBook}
+          className="button-booking text-white px-4 py-2 rounded bg-teal-600 hover:bg-teal-500"
+        >
           <NavLink
-            to={canBook ? "/booking-confirmation" : "#"}
-            onClick={(e) => {
-              if (!canBook) {
-                e.preventDefault();
-              }
+            to={"/booking-confirmation"}
+            state={{
+              hotel,
+              startDate,
+              endDate,
+              numberOfGuests,
+              totalPrice,
+              formData,
             }}
-            className={`button-booking text-white px-4 py-2 rounded ${
-              canBook
-                ? "bg-teal-600 hover:bg-teal-500"
-                : "bg-gray-400 cursor-not-allowed"
-            }`}
-            state={
-              canBook
-                ? {
-                    hotel,
-                    startDate,
-                    endDate,
-                    numberOfGuests,
-                    totalPrice,
-                    formData,
-                  }
-                : {}
-            }
           >
             Book now!
           </NavLink>

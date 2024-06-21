@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { useBooking } from "../context/BookingContext";
 
 export type FormInputs = {
   firstName: string;
@@ -15,7 +14,7 @@ type FormProps = {
   showMessage: boolean;
   showPhoneInput: boolean;
   showButton: boolean;
-  validateFormBooking: (valid: boolean) => void;
+  setIsFormBookingValid: (valid: boolean) => void;
   setFormData: React.Dispatch<React.SetStateAction<FormInputs>>;
 };
 
@@ -24,7 +23,7 @@ const FormBooking: React.FC<FormProps> = ({
   showMessage,
   showPhoneInput,
   setFormData,
-  validateFormBooking,
+  setIsFormBookingValid,
 }) => {
   const {
     register,
@@ -39,17 +38,16 @@ const FormBooking: React.FC<FormProps> = ({
   const watchAllFields = useWatch({ control }) as FormInputs;
 
   useEffect(() => {
-    const allFieldsFilled = Object.values(watchAllFields).every(
-      (value) => value.trim() !== ""
-    );
+    const allFieldsFilled =
+      JSON.stringify(watchAllFields) === "{}"
+        ? false
+        : Object.values(watchAllFields).every((value) => value.trim() !== "");
 
     const noErrors = Object.keys(errors).length === 0;
     const isValid = allFieldsFilled && noErrors;
-
-    validateFormBooking(isValid);
+    setIsFormBookingValid(isValid);
     setFormData(watchAllFields);
-  }, [errors, watchAllFields, validateFormBooking, setFormData]);
-
+  }, [errors, watchAllFields, setIsFormBookingValid, setFormData]);
 
   useEffect(() => {
     if (showMessage) {

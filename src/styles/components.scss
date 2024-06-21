@@ -159,3 +159,11 @@ input::-webkit-datetime-edit-year-field:focus {
     border-bottom: none;
   }
 }
+
+  button:disabled {
+    @apply cursor-not-allowed bg-gray-400 hover:bg-gray-400;
+}
+
+button:disabled a {
+    pointer-events: none;
+}
