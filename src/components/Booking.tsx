@@ -54,7 +54,6 @@ const Booking = () => {
   }, [showMessage]);
 
 
-
   const canBook = isValidFormDate && isFormBookingValid;
 
   return (
@@ -70,8 +69,7 @@ const Booking = () => {
         <h2 className="text-xl font-semibold mb-4 text-teal-600 mt-5">
           Guest Details
         </h2>
-        <FormBooking
-          
+        <FormBooking 
           setIsFormBookingValid={setIsFormBookingValid}
           onSubmit={onSubmit}
           showMessage={showMessage}
