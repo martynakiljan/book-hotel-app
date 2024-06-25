@@ -12,7 +12,7 @@ const Imprint = () => {
         Contact Information:
       </h2>
       <p>
-        <span className="font-bold">BookHotel App.</span>
+        <span className="font-bold">BookHotel App</span>
         <br />
         123 Main Street
         <br />
@@ -32,18 +32,14 @@ const Imprint = () => {
       </p>
       <h2 className="text-lg font-bold mt-8 text-teal-500">Liability:</h2>
       <p>
-        BookHotel App. endeavors to ensure that the information provided on this
+        BookHotel App endeavors to ensure that the information provided on this
         website is accurate and up to date. However, we cannot guarantee the
         accuracy, completeness, or reliability of the information provided.
         Users are advised to verify any information before relying on it.
-        BookHotel App. shall not be liable for any damages arising from the use
+        BookHotel App shall not be liable for any damages arising from the use
         of this website or the information it contains.
       </p>
-      <p className="mt-8">
-        Remember to replace the placeholder details (such as company name,
-        address, phone number, email, registration numbers, etc.) with your
-        actual information.
-      </p>
+  
     </div>
   );
 };

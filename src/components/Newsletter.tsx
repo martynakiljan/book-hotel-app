@@ -55,7 +55,7 @@ const Newsletter = () => {
 				</form>
 				{errors.email && <p className='text-red-500 py-2'>Please enter a valid email address.</p>}
 				{showMessage ? (
-					<p className='text-teal-600 py-2'>Thank you! you have successfully subscribed to the newsletter.</p>
+					<p className='text-teal-600 py-2'>Thank you! You have successfully subscribed to the newsletter.</p>
 				) : null}
 			</div>
 		</div>
