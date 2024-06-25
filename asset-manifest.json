@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f4e9f211.css",
+    "main.js": "/static/js/main.3ee33d6a.js",
+    "static/js/453.9bffea97.chunk.js": "/static/js/453.9bffea97.chunk.js",
+    "static/media/hotel-3.jpg": "/static/media/hotel-3.98a3323c889d8ee1c174.jpg",
+    "static/media/header2.jpg": "/static/media/header2.16640357b6b06975771a.jpg",
+    "static/media/team2.jpg": "/static/media/team2.2fcb9141ad0f7e92944d.jpg",
+    "static/media/team3.jpg": "/static/media/team3.d07d8e3e54cc585443be.jpg",
+    "static/media/hotel-9.jpg": "/static/media/hotel-9.25e2db000afeade10c42.jpg",
+    "static/media/voucher.png": "/static/media/voucher.eddfa46f7b8e64065d34.png",
+    "static/media/team1.jpg": "/static/media/team1.7f7cd15554410fe9b8f0.jpg",
+    "static/media/review7.png": "/static/media/review7.65d24edb494fef06f627.png",
+    "static/media/review3.png": "/static/media/review3.c92aed378aee0043dfa5.png",
+    "static/media/review2.png": "/static/media/review2.c7161a413563e1e15762.png",
+    "static/media/review5.png": "/static/media/review5.90a22f1cd936a03c8f5e.png",
+    "static/media/review8.png": "/static/media/review8.25de8135de37b803a36d.png",
+    "static/media/review4.png": "/static/media/review4.e808a0d4562d7b70a301.png",
+    "static/media/review9.png": "/static/media/review9.ca55754a52d03fc05566.png",
+    "static/media/review6.png": "/static/media/review6.97e4e803eb516a225e9f.png",
+    "static/media/hotel-1.jpg": "/static/media/hotel-1.141155f36836351f02db.jpg",
+    "static/media/hotel-7.jpg": "/static/media/hotel-7.a62dca7acb9c469fba35.jpg",
+    "static/media/hotel-2.jpg": "/static/media/hotel-2.ecb7c1cd87e7732562a8.jpg",
+    "static/media/review1.png": "/static/media/review1.55a1ac19fa99d54bf003.png",
+    "static/media/hotel-6.jpg": "/static/media/hotel-6.a93c4b384df7fbb86cb5.jpg",
+    "static/media/hotel-10.jpg": "/static/media/hotel-10.53b5b8056a24020163ad.jpg",
+    "static/media/hotel-5.jpg": "/static/media/hotel-5.f08d49cd59c54baedd35.jpg",
+    "static/media/hotel-8.jpg": "/static/media/hotel-8.15c6d59e9961402b1aea.jpg",
+    "static/media/hotel-4.jpg": "/static/media/hotel-4.233a466a3a5c3643cb8e.jpg",
+    "index.html": "/index.html",
+    "main.f4e9f211.css.map": "/static/css/main.f4e9f211.css.map",
+    "main.3ee33d6a.js.map": "/static/js/main.3ee33d6a.js.map",
+    "453.9bffea97.chunk.js.map": "/static/js/453.9bffea97.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f4e9f211.css",
+    "static/js/main.3ee33d6a.js"
+  ]
+}
