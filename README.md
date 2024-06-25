@@ -2,7 +2,7 @@
 
 
  <h4>🔶 Technologies: REACT, TYPESCRIPT, REACT ROUTER DOM, TAILWIND CSS </h4>
- <h4>🔶 [Live click](https://www.martynakiljan.github.io/book-hotel-app/) </h4>
+ <h4>🔶 LIVE: https://www.martynakiljan.github.io/book-hotel-app</h4>
 
 -------
 
