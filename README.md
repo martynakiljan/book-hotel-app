@@ -3,10 +3,8 @@
 
 
 🔶 Technologies: REACT, TYPESCRIPT, REACT ROUTER DOM, TAILWIND CSS
-
 <br>
-🔶 [Live click](https://martynakiljan.github.io/book-hotel-app/)
-
+🔶 [Live click](https://www.martynakiljan.github.io/book-hotel-app/)
 -------
 
 
