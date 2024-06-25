@@ -1,9 +1,9 @@
 <h2>Book Hotel App </h2>
 
 
-STILL IN PROGRESS... :) 
 
 🔶 Technologies: REACT, TYPESCRIPT, REACT ROUTER DOM, TAILWIND CSS
+🔶 [Live click]([https://martynakiljan.github.io/new-portfolio-2024/](https://martynakiljan.github.io/book-hotel-app/)) 
 
 -------
 
