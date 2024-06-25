@@ -121,7 +121,6 @@ useEffect(() => {
   } else if (start && end && start > end) {
     currentError = "The start date cannot be later than the end date.";
   }
-
   if (startYear && endYear && startYear !== currentYear) {
     currentError = "Please enter a correct year for the start date.";
   } else if (endYear && startYear && endYear !== currentYear) {
