@@ -1,10 +1,9 @@
 <h2>Book Hotel App </h2>
 
 
+ <h4>🔶 Technologies: REACT, TYPESCRIPT, REACT ROUTER DOM, TAILWIND CSS </h4>
+ <h4>🔶 [Live click](https://www.martynakiljan.github.io/book-hotel-app/) </h4>
 
-🔶 Technologies: REACT, TYPESCRIPT, REACT ROUTER DOM, TAILWIND CSS
-<br>
-🔶 [Live click](https://www.martynakiljan.github.io/book-hotel-app/)
 -------
 
 
