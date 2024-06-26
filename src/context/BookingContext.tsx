@@ -79,12 +79,6 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({
     }
   };
 
-  const handleBlur = () => {
-    if (isNaN(numberOfGuests)) {
-      setNumberOfGuests(1);
-    }
-  };
-
   //date form //
 
   const handleStartDateChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -95,42 +89,43 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({
     setEndDate(event.target.value);
   };
 
-useEffect(() => {
-  const today = new Date().toISOString().split("T")[0];
-  const currentYear = new Date().getFullYear();
-  let currentError = "";
+  useEffect(() => {
+    const today = new Date().toISOString().split("T")[0];
+    const currentYear = new Date().getFullYear();
+    let currentError = "";
 
-  let start, end, startYear, endYear;
-  if (startDate) {
-    start = new Date(startDate);
-    startYear = start.getFullYear();
-  }
-  if (endDate) {
-    end = new Date(endDate);
-    endYear = end.getFullYear();
-  }
+    let start, end, startYear, endYear;
+    if (startDate) {
+      start = new Date(startDate);
+      startYear = start.getFullYear();
+    }
+    if (endDate) {
+      end = new Date(endDate);
+      endYear = end.getFullYear();
+    }
 
-  if ((startDate || endDate) && (!startDate || !endDate)) {
-    currentError = "Both start date and end date must be selected.";
-  } else if (startDate && startDate < today) {
-    currentError = "The start date cannot be in the past.";
-  } else if (endDate && endDate < today) {
-    currentError = "The end date cannot be in the past.";
-  } else if (startDate && endDate && startDate === endDate) {
-    currentError = "The start date and end date cannot be the same.";
-  } else if (start && end && start > end) {
-    currentError = "The start date cannot be later than the end date.";
-  }
-  if (startYear && endYear && startYear !== currentYear) {
-    currentError = "Please enter a correct year for the start date.";
-  } else if (endYear && startYear && endYear !== currentYear) {
-    currentError = "Please enter a correct year for the end date.";
-  }
+    if ((startDate || endDate) && (!startDate || !endDate)) {
+      currentError = "Both start date and end date must be selected.";
+    } else if (startDate && startDate < today) {
+      currentError = "The start date cannot be in the past.";
+    } else if (endDate && endDate < today) {
+      currentError = "The end date cannot be in the past.";
+    } else if (startDate && endDate && startDate === endDate) {
+      currentError = "The start date and end date cannot be the same.";
+    } else if (start && end && start > end) {
+      currentError = "The start date cannot be later than the end date.";
+    }
+    if (startYear && endYear && startYear !== currentYear) {
+      currentError = "Please enter a correct year for the start date.";
+    } else if (endYear && startYear && endYear !== currentYear) {
+      currentError = "Please enter a correct year for the end date.";
+    }
 
-  setError(currentError);
-  setIsValidFormDate(currentError === "" && startDate !== "" && endDate !== "");
-}, [startDate, endDate]);
-
+    setError(currentError);
+    setIsValidFormDate(
+      currentError === "" && startDate !== "" && endDate !== ""
+    );
+  }, [startDate, endDate]);
 
   const isSubmitDisabled = !startDate || !endDate || numberOfGuests < 1;
 

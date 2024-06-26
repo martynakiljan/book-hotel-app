@@ -97,7 +97,6 @@ const DateForm: React.FC<DateFormProps> = ({
             </div>
           </div>
           {error && <p className="text-red-500 mb-4 text-xs">{error}</p>}
-
           {!showSelectForm && <SelectForm />}
           <div className="flex justify-center">
             <button
