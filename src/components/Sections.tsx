@@ -1,6 +1,6 @@
 /** @format */
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Hotels from "./Hotels";
 import About from "./About";
 import Home from "./Home";
@@ -15,10 +15,10 @@ import ScrollToTop from "./ScrollToTop";
 
 const Sections = () => {
   return (
-    <Router basename="/book-hotel-app">
+    <>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/book-hotel-app" element={<Home />} />
         <Route path="/hotels" element={<Hotels />} />
         <Route path="/hotel/:id" element={<HotelDetails />} />
         <Route path="/about" element={<About />} />
@@ -29,7 +29,7 @@ const Sections = () => {
         <Route path="/finalization" element={<Finalization />} />
         <Route path="/booking-confirmation" element={<BookingConfirmation />} />
       </Routes>
-    </Router>
+    </>
   );
 };
 

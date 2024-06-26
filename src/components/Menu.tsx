@@ -90,7 +90,10 @@ const Menu = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex md:space-x-4">
-            <NavLink to="/" className="text-gray-800 hover:text-teal-600">
+            <NavLink
+              to="/book-hotel-app"
+              className="text-gray-800 hover:text-teal-600"
+            >
               Home
             </NavLink>
             <NavLink to="/hotels" className="text-gray-800 hover:text-teal-600">
